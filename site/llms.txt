@@ -73,4 +73,4 @@ Seams:
 
 ## Optional
 
-- [Visual guide](https://growth-skill.vercel.app): the router, jobs, surfaces, flagship, invariants, and seams on one page.
+- [Visual guide](https://growthskill.vercel.app): the router, jobs, surfaces, flagship, invariants, and seams on one page.
