@@ -1,0 +1,76 @@
+# growth
+
+> Improve acquisition, activation, retention, referral, and revenue through honest
+> experimentation. Installs as an agent skill.
+
+Ask an agent whether a test is worth running and it either skips the statistics (activation,
+retention, loops and PLG advice with no validity layer underneath) or skips the growth surface
+(rigorous statistics with nowhere to land). `growth` is both in one pack: the feasibility gate,
+experiment design and interpretation, funnel and cohort diagnosis, activation, conversion
+optimization, retention, referral loops, monetization and pricing tests, product-led growth, and
+quasi-experimental methods for when randomization isn't available. It is a **faceted router, not a
+pipeline**: each request selects exactly one of 12 primary jobs, at most one of 4 base surfaces
+(self-serve SaaS is the default, and an assumed surface is stated out loud), plus additive overlays
+for small-sample traffic and agent-run experiments — so two references get read fully out of
+nineteen, never the whole pack. The flagship job, `experiment-design-and-feasibility`, answers what
+the rest of the field avoids: can this question be answered at your traffic, and what would a
+"significant" result actually be worth — the Ambition Tax, where a small sample forces a bigger bet
+and a bigger bet carries a lower prior, and the two effects multiply rather than cancel. The default
+reader runs a self-serve product with real but limited traffic — rarely enough to power a standard
+conversion-rate test the way a 200,000-visit playbook assumes. `growth` writes experiment designs,
+feasibility verdicts, readouts and requirements — no production code. Claude Code is the reference
+host; it's plain Agent Skills format (agentskills.io), so it installs on Codex, Cursor, Antigravity,
+opencode, Grok Build, and Hermes too.
+
+## Install
+
+- npm/skills.sh: `npx skills add gabros20/growth-skill -g -y`
+- Clone: `git clone https://github.com/gabros20/growth-skill`
+- Manual copy: `cp -R skills/growth ~/.claude/skills/growth`
+
+## Docs
+
+- [README.md](https://raw.githubusercontent.com/gabros20/growth-skill/main/README.md): overview, install, examples, and repository map.
+- [skills/growth/SKILL.md](https://raw.githubusercontent.com/gabros20/growth-skill/main/skills/growth/SKILL.md): runtime router, workflow, artifact contract, and completion rules.
+- [SOURCES.md](https://raw.githubusercontent.com/gabros20/growth-skill/main/SOURCES.md): source attribution, licensing rule, and the numbers this pack refuses to ship.
+
+## Reference inventory (`skills/growth/references/`)
+
+Primary jobs — exactly one per request:
+
+- `experiment-design-and-feasibility.md` — **flagship**. The feasibility gate; the derived power table against vendor floors; the metric-skew rule; the Bayes posterior on a "significant" winner; the Ambition Tax; where CUPED fails.
+- `growth-model-and-loops.md` — the shared vocabulary. Loops vs funnels, the Racecar framework correctly attributed, Verna's Five Laws, the K-factor/cycle-time math the ecosystem never built, the AARRR split reciprocated with `marketing`.
+- `funnel-and-cohort-diagnosis.md` — where a funnel is actually leaking. The 3-way retention definition — N-day, rolling, survival.
+- `opportunity-and-prioritization.md` — what to work on next. ICE read skeptically as throughput tooling, not evidence.
+- `experiment-readout-and-learning.md` — reading a finished experiment. The one-curve peeking reconciliation, the winner's-curse haircut at readout, Twyman's law as a Bayesian prior.
+- `activation-and-onboarding.md` — activation and onboarding. Why CUPED fails for new users; "aha moment" labeled folklore with no traceable origin.
+- `conversion-optimization.md` — a conversion-rate test on a page, form or button. The red-button-on-blue-page external-validity lesson; the copy→placement→color test-order rule.
+- `retention-and-resurrection.md` — churn reduction, resurrection and win-back. The Duolingo streak specimen, fully worked and resolvable.
+- `referral-and-product-loops.md` — designing a referral program. The loop math the ecosystem lacks, applied to a live design.
+- `monetization-and-pricing-experiments.md` — pricing and packaging tests. Booking's own pricing-test refusal; Van Westendorp's provenance; the subscription dark-patterns table.
+- `product-led-growth.md` — evaluating a PLG motion. Five-field benchmark-provenance discipline; the Sean Ellis 40% test with its own generalizability caveat.
+- `quasi-experiments.md` — a causal question when randomization isn't available. Precondition checklists in place of numeric floors.
+
+Base surfaces — at most one, reshaping how a job applies:
+
+- `surface-selfserve.md` — **default**. Anyone can sign up or trial without talking to a human.
+- `surface-b2b-sales-assisted.md` — a rep, demo or procurement gates the deal.
+- `surface-mobile-subscription.md` — IAP economics; the RevenueCat-layer dataset.
+- `surface-marketplace-network.md` — interference/SUTVA risk; diagnose the mechanism first.
+
+Additive overlays — stack on a base surface, never instead of one:
+
+- `overlay-small-sample.md` — traffic or users too small for standard power. A redirect, never a refusal.
+- `overlay-agentic.md` — a model designs, runs or reads an experiment.
+
+Seams:
+
+- `handoff.md` — every boundary with the rest of the family, from growth's side, plus the AARRR note (acquisition in `marketing`, experiments here, retention execution in `success`).
+
+## Assets (`skills/growth/assets/`)
+
+- `power_calc.py`, `srm_check.py`, `peeking_table.py`, `skew_check.py` — runnable, self-testing calculators, each validated against a published anchor at import time (PostHog, Booking.com, Fabijan et al., the Armitage table, Bing's post-erratum skewness table).
+
+## Optional
+
+- [Visual guide](https://growth-skill.vercel.app): the router, jobs, surfaces, flagship, invariants, and seams on one page.

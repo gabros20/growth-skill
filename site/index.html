@@ -1,0 +1,943 @@
+<!doctype html>
+<!-- growth skill · visual guide. Shared family chrome (tokens, type, hero-terminal, footer);
+     identity = lime accent + sections/diagrams/hero designed for THIS skill's faceted router
+     (12 jobs × 4 base surfaces + 2 additive overlays + handoff = 19 references) — the funnel-wide
+     experimentation surface. Its flagship is the feasibility gate: can this question be answered
+     at your traffic, and what would a "significant" result actually be worth — the Ambition Tax,
+     where a small sample forces a bigger bet and a bigger bet carries a lower prior, and the two
+     effects multiply rather than cancel. The two additive overlays carry the violet token
+     (--tok-dim), the same convention automation/operate/quality/data/marketing use for their own
+     additive overlays. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#f6f7fa">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#12151d">
+<title>growth — improve acquisition, activation, retention, referral, and revenue</title>
+<meta name="description" content="A faceted agent skill for funnel-wide growth experimentation — the feasibility gate (can this be answered at your scale), experiment design, funnel and cohort diagnosis, activation, conversion optimization, retention, referral loops, pricing tests, and product-led growth. It grades every benchmark, win rate and 'best practice' by evidence tier and names the hit rate a significant result was actually read against. 12 jobs across 4 surfaces plus two additive overlays — flagship is the feasibility gate and the Ambition Tax: what a significant result is actually worth at your real traffic.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://growth-skill.vercel.app/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="growth — improve acquisition, activation, retention, referral, and revenue">
+<meta property="og:description" content="The feasibility gate, experiment design and interpretation, funnel diagnosis, activation, conversion optimization, retention, referral loops, pricing tests, and product-led growth — for a self-serve product with real but limited traffic. Every benchmark carries its evidence tier; every significant result carries the prior it was read against and the haircut applied to it.">
+<meta property="og:url" content="https://growth-skill.vercel.app/">
+<meta property="og:image" content="https://growth-skill.vercel.app/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="growth">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="growth — improve acquisition, activation, retention, referral, and revenue">
+<meta name="twitter:description" content="Funnel-wide growth experimentation, with the validity layer built in. 12 jobs across 4 surfaces plus two additive overlays — flagship is the feasibility gate: can this be answered at your scale, and what would a significant result actually be worth.">
+<meta name="twitter:image" content="https://growth-skill.vercel.app/og.png">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "growth",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Claude Code / agent CLIs",
+  "description": "A faceted agent skill for funnel-wide growth experimentation: the feasibility gate and experiment design (flagship), growth-model vocabulary and loop math, funnel and cohort diagnosis, opportunity prioritization, experiment readout and learning, activation and onboarding, conversion optimization, retention and resurrection, referral and product loops, monetization and pricing experiments, product-led growth, and quasi-experimental methods. Covers self-serve SaaS, B2B sales-assisted, mobile-subscription and marketplace/network surfaces, plus additive small-sample and agentic overlays. Grades every benchmark and win rate by evidence tier and names the real prior a significant result was read against; cites data's measurement-validity mechanics by name rather than re-teaching them. Writes experiment designs, feasibility verdicts, readouts and requirements — no production code. Not for measurement validity/SRM/CUPED mechanics, demand and channels, pricing tiers and roadmap, rollout ramps and flags, page composition, or cold outbound — those route to data, marketing, product, operate, design, and sales respectively.",
+  "url": "https://growth-skill.vercel.app/",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "license": "https://opensource.org/licenses/MIT",
+  "sameAs": ["https://github.com/gabros20/growth-skill"]
+}
+</script>
+
+<style>
+  :root{
+    --bg:#f6f7fa; --panel:#ffffff; --ink:#1c2333; --muted:#5a6478; --line:#d8dde8;
+    --accent:#65a30d; --accent-ink:#132b06; --amber:#a97a10; --amber-bg:#fdf6e3;
+    --good:#1e7f4f; --bad:#b3403a; --code-bg:#eef1f7; --glyph:#8391ad;
+    --tok-dim:#8146c9; --tok-val:#1e7f4f; --tok-file:#a97a10;
+    --dim-bg:rgba(129,70,201,.08);
+  }
+  @media (prefers-color-scheme: dark){ :root{
+    --bg:#12151d; --panel:#1a1f2b; --ink:#e6eaf3; --muted:#93a0b8; --line:#2b3245;
+    --accent:#a3e635; --accent-ink:#0d1220; --amber:#d9a72e; --amber-bg:#26200f;
+    --good:#4cc38a; --bad:#e5726c; --code-bg:#141824; --glyph:#5d6a85;
+    --tok-dim:#b98aef; --tok-val:#4cc38a; --tok-file:#d9a72e;
+    --dim-bg:rgba(185,138,239,.14);
+  }}
+  :root[data-theme="dark"]{
+    --bg:#12151d; --panel:#1a1f2b; --ink:#e6eaf3; --muted:#93a0b8; --line:#2b3245;
+    --accent:#a3e635; --accent-ink:#0d1220; --amber:#d9a72e; --amber-bg:#26200f;
+    --good:#4cc38a; --bad:#e5726c; --code-bg:#141824; --glyph:#5d6a85;
+    --tok-dim:#b98aef; --tok-val:#4cc38a; --tok-file:#d9a72e;
+    --dim-bg:rgba(185,138,239,.14);
+  }
+  :root[data-theme="light"]{
+    --bg:#f6f7fa; --panel:#ffffff; --ink:#1c2333; --muted:#5a6478; --line:#d8dde8;
+    --accent:#65a30d; --accent-ink:#132b06; --amber:#a97a10; --amber-bg:#fdf6e3;
+    --good:#1e7f4f; --bad:#b3403a; --code-bg:#eef1f7; --glyph:#8391ad;
+    --tok-dim:#8146c9; --tok-val:#1e7f4f; --tok-file:#a97a10;
+    --dim-bg:rgba(129,70,201,.08);
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%; text-size-adjust:100%}
+  html,body{overflow-x:hidden; max-width:100%}
+  .wedgegrid>*,.seam>*,.downstream>*,.seambox,.boundary>*,.bandgrid>*{min-width:0}
+  body{background:var(--bg); color:var(--ink); font:16px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif; margin:0; -webkit-font-smoothing:antialiased}
+  .wrap{max-width:1060px; margin:0 auto; padding:0 24px 96px}
+  code,.mono{font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace}
+  .eyebrow{font-family:"Avenir Next Condensed","Arial Narrow",system-ui,sans-serif; text-transform:uppercase; letter-spacing:.14em; font-weight:600; font-size:13px; color:var(--muted)}
+  h1{font-family:ui-monospace,"SF Mono",Menlo,monospace; font-size:clamp(34px,6vw,56px); margin:.1em 0 .15em; letter-spacing:-.02em; text-wrap:balance}
+  h1 .sl{color:var(--accent)}
+  h2{font-family:"Avenir Next Condensed","Arial Narrow",system-ui,sans-serif; text-transform:uppercase; letter-spacing:.09em; font-size:21px; margin:0 0 4px; display:flex; align-items:center; gap:12px}
+  h2::after{content:""; flex:1; height:1px; background:var(--line)}
+  h2 .lu{color:var(--accent); width:20px; height:20px}
+  section{margin-top:64px}
+  .lede{font-size:19px; color:var(--muted); max-width:64ch; margin:0}
+  .hosts{display:flex; flex-wrap:wrap; align-items:center; gap:7px; margin:16px 0 0}
+  .hosts .hl{font-family:"Avenir Next Condensed","Arial Narrow",system-ui,sans-serif; text-transform:uppercase; letter-spacing:.14em; font-weight:600; font-size:11px; color:var(--muted); margin-right:2px}
+  .hosts span:not(.hl){font-family:ui-monospace,Menlo,monospace; font-size:11.5px; color:var(--muted); background:var(--code-bg); border-radius:5px; padding:3px 8px; white-space:nowrap}
+  .hosts span.ref{color:var(--accent); font-weight:600}
+  .lede b{color:var(--ink)}
+  p{max-width:68ch}
+  a{color:var(--accent)}
+
+  .lu{width:18px; height:18px; fill:none; stroke:currentColor; stroke-width:1.75; stroke-linecap:round; stroke-linejoin:round; flex:none; vertical-align:-3px}
+
+  nav.toplinks{display:flex; flex-wrap:wrap; gap:8px; margin-top:26px}
+  nav.toplinks a{font-family:ui-monospace,Menlo,monospace; font-size:12.5px; text-decoration:none; color:var(--muted); border:1px solid var(--line); border-radius:999px; padding:4px 12px; background:var(--panel)}
+  nav.toplinks a:hover,nav.toplinks a:focus-visible{color:var(--accent); border-color:var(--accent); outline:none}
+  .secnav{display:flex; flex-wrap:wrap; gap:8px; margin-top:26px}
+  .secnav a{font-family:ui-monospace,Menlo,monospace; font-size:12.5px; text-decoration:none; color:var(--muted); border:1px solid var(--line); border-radius:999px; padding:4px 12px; background:var(--panel)}
+  .secnav a:hover,.secnav a:focus-visible{color:var(--accent); border-color:var(--accent); outline:none}
+  .secnav a::before{content:"#"; color:var(--glyph); margin-right:5px}
+  .secnav a:hover::before,.secnav a:focus-visible::before{color:var(--accent)}
+
+  header{padding-top:64px}
+  .term{background:var(--code-bg); border:1px solid var(--line); border-radius:8px; padding:14px 18px; font-family:ui-monospace,Menlo,monospace; font-size:13.5px; line-height:1.7; overflow-x:auto; white-space:pre}
+  .term .c{color:var(--muted)}
+  .term .p{color:var(--accent); font-weight:600}
+
+  .vidwrap{display:none; margin-top:22px}
+  .vidwrap video{display:block; width:100%; aspect-ratio:16/9; border:1px solid var(--line); border-radius:10px; background:var(--bg); box-shadow:0 30px 70px -40px rgba(0,0,0,.45)}
+  body.has-vid .vidwrap{display:block}
+  body.has-vid .herofallback{display:none}
+
+  /* the router card — also the hero's static fallback */
+  .router{background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:22px 24px; margin-top:22px}
+  .gate{display:flex; align-items:flex-start; gap:10px; font-family:ui-monospace,Menlo,monospace; font-size:12.5px; color:var(--muted); padding:0 0 16px; margin-bottom:16px; border-bottom:1px dashed var(--line); line-height:1.55}
+  .gate .lu{width:16px; height:16px; color:var(--accent); flex:none; margin-top:2px}
+  .gate b{color:var(--ink)}
+  .rlane{display:grid; grid-template-columns:150px 1fr; gap:14px 16px; align-items:center}
+  .rlane + .rlane{margin-top:12px}
+  .rlabel{font-family:"Avenir Next Condensed","Arial Narrow",system-ui,sans-serif; text-transform:uppercase; letter-spacing:.1em; font-weight:600; font-size:12px; color:var(--muted); text-align:right; line-height:1.25}
+  .rlabel small{display:block; font-family:ui-monospace,Menlo,monospace; text-transform:none; letter-spacing:0; font-weight:400; font-size:10.5px; color:var(--glyph)}
+  .chips{display:flex; flex-wrap:wrap; gap:7px}
+  .chip{font-family:ui-monospace,Menlo,monospace; font-size:12.5px; padding:5px 11px; border-radius:8px; white-space:nowrap; color:var(--muted); background:var(--bg); border:1px solid var(--line)}
+  .chip.on{color:var(--accent-ink); background:var(--accent); border-color:var(--accent); font-weight:600}
+  .chip.star{color:var(--accent-ink); background:var(--accent); border-color:var(--accent); font-weight:600}
+  .chip.dimon{color:var(--tok-dim); background:var(--dim-bg); border-color:var(--tok-dim); font-weight:600}
+  .rdown{display:flex; align-items:center; gap:10px; margin:16px 0 14px; color:var(--glyph)}
+  .rdown::before,.rdown::after{content:""; flex:1; height:1px; background:var(--line)}
+  .rdown span{font-family:ui-monospace,Menlo,monospace; font-size:12px; color:var(--muted)}
+  .readset{display:flex; flex-wrap:wrap; gap:9px; align-items:center}
+  .readset code{font-family:ui-monospace,Menlo,monospace; font-size:12.5px; padding:6px 12px; border-radius:8px; color:var(--accent); background:var(--code-bg); border:1px solid var(--accent)}
+  .readset .cnt{font-family:ui-monospace,Menlo,monospace; font-size:12px; color:var(--muted); margin-left:4px}
+  .readset .cnt b{color:var(--ink)}
+  .rrule{margin:16px 0 0; font-size:13.5px; color:var(--muted); display:flex; gap:9px; line-height:1.55; max-width:none}
+  .rrule .lu{color:var(--accent); flex:none; margin-top:1px; width:17px; height:17px}
+  .rrule b{color:var(--ink)}
+  .pcap{font-size:13.5px; color:var(--muted); margin:14px 0 0; max-width:68ch}
+  .pcap b{color:var(--ink)}
+  /* the annotation chips carry a sentence, not a label — at phone widths nowrap would clip them
+     against the page's overflow-x:hidden rather than scroll */
+  @media (max-width:560px){
+    .rlane{grid-template-columns:1fr; gap:6px}
+    .rlabel{text-align:left}
+    .chip{white-space:normal}
+    .router{padding:18px 16px}
+  }
+
+  /* mission — owns / hands off */
+  .boundary{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:20px}
+  .bcol{border:1px solid var(--line); border-radius:10px; padding:16px 18px; background:var(--panel)}
+  .bcol.own{border-left:3px solid var(--accent)}
+  .bcol.off{border-left:3px solid var(--glyph)}
+  .bcol h3{font-family:ui-monospace,Menlo,monospace; font-size:13.5px; margin:0 0 4px; display:flex; align-items:center; gap:8px}
+  .bcol.own h3{color:var(--accent)} .bcol.own h3 .lu{color:var(--accent)}
+  .bcol.off h3{color:var(--muted)} .bcol.off h3 .lu{color:var(--glyph)}
+  .bcol .sub{font-size:12.5px; color:var(--muted); margin:0 0 12px}
+  .bitems{list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:8px}
+  .bitems li{font-size:13.5px; line-height:1.4}
+  .bitems li b{font-family:ui-monospace,Menlo,monospace; font-weight:600; font-size:12.5px; color:var(--ink)}
+  .bitems.hand li b{color:var(--tok-dim)}
+  .bitems li .d{color:var(--muted)}
+  .bnote{margin-top:14px; font-size:13.5px; color:var(--muted); display:flex; gap:9px; line-height:1.55; max-width:none}
+  .bnote .lu{color:var(--accent); flex:none; margin-top:1px; width:17px; height:17px}
+  .bnote b{color:var(--ink)}
+  @media (max-width:640px){ .boundary{grid-template-columns:1fr} }
+
+  .tblwrap{overflow-x:auto; border:1px solid var(--line); border-radius:8px; margin-top:20px}
+  table{border-collapse:collapse; width:100%; font-size:14px; background:var(--panel)}
+  th{font-family:"Avenir Next Condensed","Arial Narrow",system-ui,sans-serif; text-transform:uppercase; letter-spacing:.08em; font-size:12.5px; font-weight:600; text-align:left; color:var(--muted); padding:10px 16px; border-bottom:1px solid var(--line)}
+  td{padding:11px 16px; border-bottom:1px solid var(--line); vertical-align:top; overflow-wrap:break-word}
+  @media (max-width:700px){ .tblwrap table{width:auto; min-width:640px} }
+  tr:last-child td{border-bottom:none}
+  td code{background:var(--code-bg); padding:1px 6px; border-radius:4px; font-size:12.5px; white-space:nowrap}
+  td code a{color:inherit; text-decoration:none}
+  td code a:hover{text-decoration:underline}
+  td.job{font-weight:600; color:var(--ink); line-height:1.4}
+  td .canon{color:var(--muted); font-size:12.5px; line-height:1.5}
+  td .canon b{color:var(--ink); font-weight:600}
+  td .prod{color:var(--muted); font-size:12.5px; line-height:1.45}
+  td.dim{font-weight:600; font-family:ui-monospace,Menlo,monospace; font-size:12.5px; color:var(--tok-dim); white-space:nowrap}
+  td .tier{font-family:ui-monospace,Menlo,monospace; font-size:11.5px; font-weight:700; border-radius:5px; padding:1px 7px; white-space:nowrap}
+  .tier.a{color:var(--good); border:1px solid var(--good)}
+  .tier.b{color:var(--amber); border:1px solid var(--amber)}
+  .tier.c{color:var(--bad); border:1px solid var(--bad)}
+
+  .note{background:var(--amber-bg); border:1px solid var(--amber); border-radius:8px; padding:12px 16px; font-size:14px; margin-top:16px; max-width:none}
+  .note b{color:var(--amber)}
+
+  /* surfaces */
+  .overlays{display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:12px; margin-top:20px}
+  .ov{border:1px solid var(--line); border-radius:10px; padding:15px 17px; background:var(--panel)}
+  .ov.wedge{border-color:var(--tok-dim); box-shadow:0 0 0 1px var(--tok-dim) inset; background:linear-gradient(180deg,color-mix(in srgb,var(--tok-dim) 7%,var(--panel)),var(--panel))}
+  .ov h3{font-family:ui-monospace,Menlo,monospace; font-size:14px; margin:0 0 3px; display:flex; align-items:center; gap:8px; color:var(--ink); flex-wrap:wrap}
+  .ov h3 .lu{color:var(--accent); width:16px; height:16px}
+  .ov.wedge h3 .lu{color:var(--tok-dim)}
+  .ov .file{font-family:ui-monospace,Menlo,monospace; font-size:11px; color:var(--muted); margin-left:auto; font-weight:400}
+  .ov .reshape{font-size:13px; color:var(--muted); margin:6px 0 10px; line-height:1.5; max-width:none}
+  .ov .reshape b{color:var(--ink); font-weight:600}
+  .ov .lens{font-size:12px; color:var(--muted); border-top:1px solid var(--line); padding-top:9px; display:flex; gap:7px; max-width:none}
+  .ov .lens .k{font-family:"Avenir Next Condensed","Arial Narrow",system-ui,sans-serif; text-transform:uppercase; letter-spacing:.08em; font-weight:600; color:var(--accent); flex:none}
+  .ov.wedge .lens .k{color:var(--tok-dim)}
+  .ov .badge{display:inline-block; font-family:"Avenir Next Condensed","Arial Narrow",system-ui,sans-serif; text-transform:uppercase; letter-spacing:.08em; font-weight:600; font-size:10.5px; color:var(--accent-ink); background:var(--tok-dim); border-radius:999px; padding:1px 9px; margin-left:auto}
+
+  /* flagship */
+  .wedgehead{background:var(--accent); color:var(--accent-ink); border-radius:10px 10px 0 0; padding:14px 20px; font-family:ui-monospace,Menlo,monospace; font-size:15px; font-weight:600; display:flex; align-items:center; gap:10px; margin-top:20px}
+  .wedgehead .lu{width:19px; height:19px}
+  .wedgebody{border:1px solid var(--accent); border-top:none; border-radius:0 0 10px 10px; padding:20px; background:var(--panel)}
+  .wedgegrid{display:grid; grid-template-columns:1.05fr 1fr; gap:18px}
+  @media (max-width:720px){ .wedgegrid{grid-template-columns:1fr} }
+  .wcol h3{font-family:ui-monospace,Menlo,monospace; font-size:13px; margin:0 0 8px; color:var(--ink)}
+  .ladder{list-style:none; padding:0; margin:0 0 16px; display:flex; flex-direction:column; gap:6px}
+  .ladder li{font-size:12.5px; line-height:1.4; display:flex; gap:9px; align-items:baseline}
+  .ladder li .t{font-family:ui-monospace,Menlo,monospace; font-weight:600; font-size:12px; flex:none; width:118px; color:var(--ink)}
+  .ladder li .d{color:var(--muted)}
+  .ladder li.good .t{color:var(--good)} .ladder li.warn .t{color:var(--amber)} .ladder li.bad .t{color:var(--bad)}
+  .sharprule{margin-top:18px; background:var(--amber-bg); border:1px solid var(--amber); border-radius:8px; padding:13px 16px; font-size:13.5px; line-height:1.5; max-width:none}
+  .sharprule b{color:var(--amber)}
+  .sharprule .cc{display:flex; flex-wrap:wrap; gap:6px; margin-top:9px}
+  .sharprule .cc span{font-family:ui-monospace,Menlo,monospace; font-size:11.5px; color:var(--muted); background:var(--panel); border:1px solid var(--line); border-radius:5px; padding:2px 8px}
+
+  /* the posterior ladder — what a "significant" result is actually worth */
+  .postbar{display:flex; height:38px; border-radius:8px; overflow:hidden; border:1px solid var(--line); font-family:ui-monospace,Menlo,monospace; font-size:11.5px; font-weight:600}
+  .postbar .r-in{background:var(--good); color:#fff; display:flex; align-items:center; justify-content:center; white-space:nowrap; flex:0 0 auto}
+  .postbar .r-edge{background:var(--amber); color:#0d1220; display:flex; align-items:center; justify-content:center; white-space:nowrap; flex:0 0 auto}
+  .postbar .r-out{background:var(--bad); color:#fff; display:flex; align-items:center; justify-content:center; flex:1 1 auto}
+  .poplegend{display:flex; flex-direction:column; gap:6px; margin-top:10px}
+  .pill{font-size:12px; line-height:1.4; padding:6px 10px; border-radius:7px; border:1px solid var(--line)}
+  .pill.good{color:var(--good); border-color:var(--good); background:color-mix(in srgb, var(--good) 8%, var(--panel))}
+  .pill.amber{color:var(--amber); border-color:var(--amber); background:var(--amber-bg)}
+  .pill.bad{color:var(--bad); border-color:var(--bad); background:color-mix(in srgb, var(--bad) 8%, var(--panel))}
+
+  /* what's distinct */
+  .bandgrid{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:20px}
+  @media (max-width:720px){ .bandgrid{grid-template-columns:1fr} }
+  .band{border:1px solid var(--line); border-radius:10px; padding:17px 19px; background:var(--panel)}
+  .band.sub{border-top:3px solid var(--accent)}
+  .band.stale{border-top:3px solid var(--amber)}
+  .band h3{font-family:ui-monospace,Menlo,monospace; font-size:14px; margin:0 0 4px; display:flex; align-items:center; gap:9px; color:var(--ink)}
+  .band.sub h3 .lu{color:var(--accent)} .band.stale h3 .lu{color:var(--amber)}
+  .band .sub2{font-size:12.5px; color:var(--muted); margin:0 0 12px; line-height:1.5; max-width:none}
+  .band .sub2 b{color:var(--ink)}
+  .subrules{list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:9px}
+  .subrules li{font-size:13px; line-height:1.45; display:flex; gap:9px}
+  .subrules li .lu{flex:none; margin-top:1px; width:15px; height:15px}
+  .band.sub .subrules li .lu{color:var(--accent)} .band.stale .subrules li .lu{color:var(--amber)}
+  .subrules li b{color:var(--ink); font-family:ui-monospace,Menlo,monospace; font-size:12px; font-weight:600}
+  .subrules li .d{color:var(--muted)}
+
+  /* the laws */
+  .rules{list-style:none; padding:0; margin:20px 0 0; display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:12px}
+  .rules li{background:var(--panel); border:1px solid var(--line); border-left:3px solid var(--amber); border-radius:6px; padding:12px 16px; font-size:13.5px; line-height:1.5}
+  .rules li b{display:flex; align-items:center; gap:7px; font-family:ui-monospace,Menlo,monospace; font-size:13px; margin-bottom:3px; color:var(--ink)}
+  .rules li b .lu{width:15px; height:15px; color:var(--amber)}
+  .rules li:last-child{grid-column:1 / -1; display:flex; align-items:baseline; gap:22px}
+  .rules li:last-child b{margin-bottom:0; flex:none; width:250px}
+  @media (max-width:620px){ .rules li:last-child{flex-direction:column; gap:3px} .rules li:last-child b{width:auto} }
+
+  /* core workflow */
+  .vloop{display:flex; flex-wrap:wrap; align-items:stretch; gap:0; margin-top:20px; border:1px solid var(--line); border-radius:10px; overflow:hidden; background:var(--panel)}
+  .vstep{flex:1 1 0; min-width:130px; padding:14px 16px; border-right:1px solid var(--line); display:flex; flex-direction:column; gap:5px}
+  .vstep:last-child{border-right:none}
+  .vstep .n{font-family:ui-monospace,Menlo,monospace; font-size:11px; color:var(--glyph)}
+  .vstep .t{font-family:ui-monospace,Menlo,monospace; font-size:13.5px; color:var(--ink); font-weight:600; display:flex; align-items:center; gap:6px}
+  .vstep .t .lu{color:var(--accent); width:15px; height:15px}
+  .vstep .d{font-size:11.5px; color:var(--muted); line-height:1.4}
+  @media (max-width:640px){ .vstep{flex-basis:45%; border-right:1px solid var(--line)} }
+
+  .artgrid{display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:12px; margin-top:20px}
+  .art{border:1px solid var(--line); border-radius:10px; padding:15px 17px; background:var(--panel)}
+  .art h3{font-family:ui-monospace,Menlo,monospace; font-size:13.5px; margin:0 0 4px; display:flex; align-items:center; gap:8px; color:var(--ink)}
+  .art h3 .lu{color:var(--accent); width:16px; height:16px; flex:none}
+  .art .file{display:block; font-family:ui-monospace,Menlo,monospace; font-size:11px; color:var(--muted); margin:0 0 8px}
+  .art p{font-size:12.5px; color:var(--muted); margin:0; line-height:1.5; max-width:none}
+  .art p b{color:var(--ink); font-weight:600}
+
+  /* handoff seams */
+  .seam{display:grid; grid-template-columns:1fr auto 1.15fr; gap:0 18px; align-items:stretch; margin-top:20px}
+  .seambox{border:1px solid var(--line); border-radius:10px; padding:16px 18px; background:var(--panel)}
+  .seam>.seambox:first-child{align-self:start}
+  .seambox.mid{border-color:var(--accent); background:var(--code-bg)}
+  .seambox h3{font-family:ui-monospace,Menlo,monospace; font-size:13.5px; margin:0 0 8px; display:flex; align-items:center; gap:8px; color:var(--ink)}
+  .seambox h3 .lu{width:16px; height:16px; color:var(--accent)}
+  .seambox p{font-size:12.5px; color:var(--muted); margin:0; line-height:1.5; max-width:none}
+  .seamyaml{font-family:ui-monospace,Menlo,monospace; font-size:11.5px; line-height:1.7; color:var(--muted); margin:0; white-space:pre; overflow-x:auto; min-width:0; max-width:100%}
+  .seamyaml .k{color:var(--accent)} .seamyaml .v{color:var(--ink)} .seamyaml .req{color:var(--tok-val)}
+  .seamarrows{display:flex; flex-direction:column; justify-content:center; gap:16px; color:var(--accent); font-family:ui-monospace,Menlo,monospace; font-size:22px}
+  /* stacked, not three columns: each seam carries a paragraph, and three columns at this
+     width collapses them into unreadable ribbons */
+  .downstream{display:grid; grid-template-rows:repeat(3,auto); gap:12px; align-content:stretch}
+  @media (max-width:760px){
+    .seam{grid-template-columns:1fr; gap:14px}
+    .seamarrows{flex-direction:row; justify-content:center; gap:40px}
+    .seamarrows span{transform:rotate(90deg)}
+  }
+  .seamnote{margin-top:14px; font-size:13.5px; color:var(--muted); display:flex; gap:9px; line-height:1.55; max-width:none}
+  .seamnote .lu{color:var(--accent); flex:none; margin-top:1px; width:17px; height:17px}
+  .seamnote b{color:var(--ink)}
+
+  /* the family strip */
+  .family{display:flex; flex-wrap:wrap; gap:8px; margin-top:18px}
+  .family a{font-family:ui-monospace,Menlo,monospace; font-size:12.5px; text-decoration:none; color:var(--muted); border:1px solid var(--line); border-radius:999px; padding:5px 13px; background:var(--panel)}
+  .family a:hover,.family a:focus-visible{color:var(--accent); border-color:var(--accent); outline:none}
+  .family a .st{color:var(--glyph); margin-right:6px}
+  .family a:hover .st{color:var(--accent)}
+  .family span.unshipped{font-family:ui-monospace,Menlo,monospace; font-size:12.5px; color:var(--glyph); border:1px dashed var(--line); border-radius:999px; padding:5px 13px}
+
+  details.disc{background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:0; margin-top:14px}
+  details.disc summary{cursor:pointer; padding:13px 18px; font-family:ui-monospace,Menlo,monospace; font-size:13.5px; color:var(--accent); list-style:none; display:flex; align-items:center; gap:8px}
+  details.disc summary::before{content:"▸"; color:var(--glyph); transition:transform .12s ease}
+  details.disc[open] summary::before{transform:rotate(90deg)}
+  details.disc summary:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+  details.disc>div{padding:2px 18px 16px}
+  details.disc .tblwrap{margin-top:8px}
+  details.disc p{font-size:13.5px; color:var(--muted)}
+
+  .files{background:var(--code-bg); border:1px solid var(--line); border-radius:8px; padding:16px 20px; font-family:ui-monospace,Menlo,monospace; font-size:13px; line-height:1.9; overflow-x:auto; white-space:pre; margin-top:8px}
+  .files .d{color:var(--muted)}
+  .files .hl{color:var(--accent); font-weight:600}
+
+  footer{margin-top:72px; padding-top:20px; border-top:1px solid var(--line); font-size:13px; color:var(--muted); display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px}
+  .edge{position:fixed; left:0; right:0; height:8px; background:var(--bg); z-index:0; pointer-events:none}
+  .edge.top{top:0} .edge.bottom{bottom:0}
+</style>
+</head>
+<body>
+<div class="edge top" aria-hidden="true"></div>
+<div class="edge bottom" aria-hidden="true"></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="lu-route" viewBox="0 0 24 24"><circle cx="6" cy="19" r="3"/><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"/><circle cx="18" cy="5" r="3"/></symbol>
+  <symbol id="lu-git-fork" viewBox="0 0 24 24"><circle cx="12" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><path d="M18 9v2c0 .6-.4 1-1 1H7c-.6 0-1-.4-1-1V9"/><path d="M12 12v3"/></symbol>
+  <symbol id="lu-scale" viewBox="0 0 24 24"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></symbol>
+  <symbol id="lu-shield-alert" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="M12 8v4"/><path d="M12 16h.01"/></symbol>
+  <symbol id="lu-shield-check" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="lu-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></symbol>
+  <symbol id="lu-flask" viewBox="0 0 24 24"><path d="M10 2v7.31"/><path d="M14 9.3V1.99"/><path d="M8.5 2h7"/><path d="M14 9.3a6.5 6.5 0 1 1-4 0"/><path d="M5.52 16h12.96"/></symbol>
+  <symbol id="lu-shuffle" viewBox="0 0 24 24"><path d="m18 14 4 4-4 4"/><path d="m18 2 4 4-4 4"/><path d="M2 18h1.973a4 4 0 0 0 3.3-1.7l5.454-8.6a4 4 0 0 1 3.3-1.7H22"/><path d="M2 6h1.972a4 4 0 0 1 3.6 2.2"/><path d="M22 18h-6.041a4 4 0 0 1-3.3-1.8l-.359-.45"/></symbol>
+  <symbol id="lu-repeat" viewBox="0 0 24 24"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></symbol>
+  <symbol id="lu-bot" viewBox="0 0 24 24"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></symbol>
+  <symbol id="lu-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
+  <symbol id="lu-sparkles" viewBox="0 0 24 24"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/></symbol>
+  <symbol id="lu-file-check" viewBox="0 0 24 24"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="m9 15 2 2 4-4"/></symbol>
+  <symbol id="lu-file-input" viewBox="0 0 24 24"><path d="M4 11V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.706.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-1"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/><path d="M2 15h10"/><path d="m9 18 3-3-3-3"/></symbol>
+  <symbol id="lu-files" viewBox="0 0 24 24"><path d="M15 2h-4a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V8"/><path d="M16.706 2.706A2.4 2.4 0 0 0 15 2v5a1 1 0 0 0 1 1h5a2.4 2.4 0 0 0-.706-1.706z"/><path d="M5 7a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h8a2 2 0 0 0 1.732-1"/></symbol>
+  <symbol id="lu-layers" viewBox="0 0 24 24"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z"/><path d="m6.08 9.5-3.5 1.6a1 1 0 0 0 0 1.81l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9a1 1 0 0 0 0-1.83l-3.5-1.59"/><path d="m6.08 14.5-3.5 1.6a1 1 0 0 0 0 1.81l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9a1 1 0 0 0 0-1.83l-3.5-1.59"/></symbol>
+  <symbol id="lu-coins" viewBox="0 0 24 24"><path d="M13.744 17.736a6 6 0 1 1-7.48-7.48"/><path d="M15 6h1v4"/><path d="m6.134 14.768.866-.5 2 3.464"/><circle cx="16" cy="8" r="6"/></symbol>
+  <symbol id="lu-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+  <symbol id="lu-smartphone" viewBox="0 0 24 24"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></symbol>
+  <symbol id="lu-pen-line" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.376 3.622a1 1 0 0 1 3.002 3.002L7.368 18.635a2 2 0 0 1-.855.506l-2.872.838a.5.5 0 0 1-.62-.62l.838-2.872a2 2 0 0 1 .506-.854z"/></symbol>
+  <symbol id="lu-activity" viewBox="0 0 24 24"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2"/></symbol>
+  <symbol id="lu-search-check" viewBox="0 0 24 24"><path d="m8 11 2 2 4-4"/><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
+  <symbol id="lu-clipboard-list" viewBox="0 0 24 24"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/></symbol>
+  <symbol id="lu-trending-up" viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></symbol>
+  <symbol id="lu-megaphone" viewBox="0 0 24 24"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></symbol>
+</svg>
+<div class="wrap">
+<header>
+  <div class="eyebrow">an agent skill · the feasibility gate, experiment design, and funnel-wide growth</div>
+  <nav class="toplinks" aria-label="external links">
+    <a href="https://github.com/gabros20/growth-skill" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://github.com/gabros20/growth-skill#install" target="_blank" rel="noopener">Install</a>
+    <a href="/llms.txt">llms.txt</a>
+  </nav>
+  <h1><span class="sl">/</span>growth</h1>
+  <p class="lede"><b>growth</b> decides what's worth testing, whether it can be answered at your
+  scale, and what a result actually means once it exists — then designs the experiment, diagnoses
+  the funnel, and reads out the result. What makes it different is that <b>the growth surface and
+  the validity layer live in the same pack</b>: the incumbent genre teaches statistical rigor with
+  no growth surface attached, or the growth surface — activation, retention, loops, PLG — with no
+  validity layer underneath. The default reader runs a self-serve product with <b>real but limited
+  traffic</b> — enough to test something, rarely enough to power a standard conversion-rate
+  experiment the way a 200,000-visit playbook assumes.</p>
+  <div class="term" style="margin-top:22px"><span class="c"># natural language — no flags, no fixed pipeline</span>
+<span class="p">/growth</span> is a 3% lift on our signup form worth testing, given we get 400 signups a month</div>
+  <p class="hosts"><span class="hl">runs on</span><span class="ref">Claude Code</span><span>Codex</span><span>Cursor</span><span>Antigravity</span><span>opencode</span><span>Grok Build</span><span>Hermes</span></p>
+  <nav class="secnav" aria-label="page sections">
+    <a href="#mission">mission</a><a href="#router">the router</a><a href="#jobs">by job</a>
+    <a href="#surfaces">surfaces</a><a href="#flagship">the gate ⭐</a><a href="#distinct">what's distinct</a>
+    <a href="#laws">invariants</a><a href="#artifacts">artifacts</a><a href="#handoff">handoff</a><a href="#start">start here</a>
+  </nav>
+
+  <div class="vidwrap" id="vidwrap"></div>
+  <!-- render from remotion/, see remotion/README -->
+  <div class="herofallback router" role="img" aria-label="The feasibility gate: an instinct like 'we don't have enough traffic to test this' gets checked, not declared, against a power you'd trust before a hypothesis or a flag exists — a no is never a bare refusal, it is a redirect to a bigger bet, an upstream metric, or a documented skip. Halving the detectable effect quadruples the traffic a test needs, and metric choice alone can move that requirement two more orders of magnitude. The centerpiece is the Ambition Tax: winning estimates are biased upward by 13 to 30 percent depending on arm count and correction, small samples force bigger bets, and bigger bets carry lower priors — the two effects multiply rather than cancel, read against a Bayes posterior table showing what a significant result is actually worth at real, sourced hit rates from 94 percent down to 46. Then one primary job composes with at most one of four base surfaces, self-serve SaaS by default, plus two additive overlays for small-sample traffic and agent-run experiments, resolving to the smallest sufficient reference set: two files, read fully, out of nineteen.">
+    <div class="gate"><svg class="lu" aria-hidden="true"><use href="#lu-scale"/></svg><span><b>A significant result is a posterior, not a fact.</b> Its trustworthiness is set entirely by a hit rate you knew before you ran the test — and a small sample forces a bigger bet, while a bigger bet carries a lower prior. The two effects multiply, not cancel.</span></div>
+    <div class="rlane">
+      <div class="rlabel">the tax<small>what a "win" is worth</small></div>
+      <div class="chips">
+        <span class="chip" style="color:var(--good); border-color:var(--good)">π=50% → 94.1% posterior</span>
+        <span class="chip" style="color:var(--good); border-color:var(--good)">π=1/3 → 88.9%</span>
+        <span class="chip" style="color:var(--amber); border-color:var(--amber)">π=10% → 64.0%</span>
+        <span class="chip" style="color:var(--bad); border-color:var(--bad)">π=5% → 45.7% — a coin flip, dressed as a win</span>
+      </div>
+    </div>
+    <div class="rlane">
+      <div class="rlabel">① primary job<small>exactly one, of 12</small></div>
+      <div class="chips">
+        <span class="chip star">experiment-design-and-feasibility ⭐</span><span class="chip">growth-model-and-loops</span>
+        <span class="chip">funnel-and-cohort-diagnosis</span><span class="chip">opportunity-and-prioritization</span>
+        <span class="chip">experiment-readout-and-learning</span><span class="chip">activation-and-onboarding</span>
+        <span class="chip">conversion-optimization</span><span class="chip">retention-and-resurrection</span>
+        <span class="chip">referral-and-product-loops</span><span class="chip">monetization-and-pricing-experiments</span>
+        <span class="chip">product-led-growth</span><span class="chip">quasi-experiments</span>
+      </div>
+    </div>
+    <div class="rlane">
+      <div class="rlabel">② base surface<small>at most one, of 4</small></div>
+      <div class="chips">
+        <span class="chip on">self-serve SaaS</span><span class="chip">B2B sales-assisted</span>
+        <span class="chip">mobile subscription</span><span class="chip">marketplace / network</span>
+        <span class="chip" style="border-style:dashed">assumed when unstated — and said out loud</span>
+      </div>
+    </div>
+    <div class="rlane">
+      <div class="rlabel">③ additive overlays<small>stack on, never instead</small></div>
+      <div class="chips">
+        <span class="chip dimon">overlay-small-sample</span><span class="chip dimon">overlay-agentic</span>
+        <span class="chip" style="border-style:dashed">traffic too small for standard power · a model designs, runs or reads the test</span>
+      </div>
+    </div>
+    <div class="rdown"><span>compose →</span></div>
+    <div class="readset">
+      <code>experiment-design-and-feasibility.md</code><code>surface-selfserve.md</code>
+      <span class="cnt"><b>2 of 19</b> loaded · read fully</span>
+    </div>
+    <p class="rrule"><svg class="lu" aria-hidden="true"><use href="#lu-route"/></svg><span><b>Route before acting.</b> One job, at most one base surface, overlays added only when they apply. If the request names no business model, the skill does not stall — it assumes self-serve SaaS and says which it assumed.</span></p>
+  </div>
+  <p class="pcap"><b>The router is the skill.</b> There is no fixed test-to-ship pipeline to run
+  start-to-finish — each job stands alone and enters where your request is. The animation traces
+  one path (the flagship gate, deciding what a "significant" result can honestly support); the
+  sections below map the whole surface it routes across.</p>
+</header>
+
+<section id="mission">
+  <h2><svg class="lu" aria-hidden="true"><use href="#lu-flask"/></svg>Define and evaluate the experiment</h2>
+  <p>Improve acquisition-to-revenue conversion by deciding what's worth testing, whether it can be
+  answered at your scale, and what a result actually means once it exists. <code>growth</code> owns
+  the feasibility gate, the design, and the interpretation — not the measurement machinery
+  underneath it, and not the demand that fills the top of the funnel. The scope is funnel-wide:
+  diagnosis, prioritization, feasibility, readout, activation, conversion optimization, retention,
+  referral loops, pricing experiments, product-led growth, and quasi-experimental methods for when
+  randomization isn't available. <code>growth</code> writes experiment designs, feasibility
+  verdicts, readouts and requirements. It writes <b>no production code</b>, and it does not compose
+  the variant it tests.</p>
+  <div class="boundary">
+    <div class="bcol own">
+      <h3><svg class="lu" aria-hidden="true"><use href="#lu-shield-check"/></svg>growth owns</h3>
+      <p class="sub">everything between "should we test this" and "what did the result actually prove"</p>
+      <ul class="bitems">
+        <li><b>what a test can honestly prove ⭐</b> <span class="d">— the feasibility gate matched to your real traffic, and the Ambition Tax a significant result on it pays</span></li>
+        <li><b>the diagnosis and the design</b> <span class="d">— funnel and cohort diagnosis, opportunity prioritization, experiment design, and the quasi-experimental substitute when randomization isn't available</span></li>
+        <li><b>the interpretation</b> <span class="d">— peek-safe readout, the winner's-curse haircut, and the decision rule committed to before the result exists</span></li>
+        <li><b>activation, retention and referral experimentation</b> <span class="d">— does a resurrection nudge work, does a loop actually compound, on top of a pipeline `data` has certified</span></li>
+      </ul>
+    </div>
+    <div class="bcol off">
+      <h3><svg class="lu" aria-hidden="true"><use href="#lu-git-fork"/></svg>hands off to</h3>
+      <p class="sub">the "Not this skill" table — ten asks this skill declines by design</p>
+      <ul class="bitems hand">
+        <li><b>data</b> <span class="d">— measurement validity: SRM, CUPED's mechanics, assignment integrity, peek-safe method selection. Growth cites it by name and never re-teaches it</span></li>
+        <li><b>marketing</b> <span class="d">— demand, channels, positioning; marketing proposes the hypothesis, growth tests it and never reports the readout as marketing's finding</span></li>
+        <li><b>product</b> <span class="d">— pricing tiers, the roadmap, which metric a strategy optimizes for; growth moves the metric, never sets it</span></li>
+        <li><b>operate</b> <span class="d">— rollout ramps, feature-flag lifecycle and debt, a standing production threshold — proceeds on the null, where an experiment proceeds on a rejected one</span></li>
+        <li><b>design · frontend · backend · ai</b> <span class="d">— page composition, in-product voice, and implementing the winning variant. Growth ships a spec and a readout, never code</span></li>
+        <li><b>sales · success</b> <span class="d">— pipeline and cold outbound; onboarding education and retention communications a growth test showed were worth sending</span></li>
+      </ul>
+    </div>
+  </div>
+  <p class="bnote"><svg class="lu" aria-hidden="true"><use href="#lu-users"/></svg><span><b>The default reader runs a self-serve product with real but limited traffic.</b>
+  Enough to test something, rarely enough to power a standard conversion-rate experiment the way a
+  200,000-visit playbook assumes. What remains at that scale is real: bolder tests, upstream
+  metrics, and honest acceptance of a higher false-positive rate — never "you can't test."</span></p>
+</section>
+
+<section id="router">
+  <h2><svg class="lu" aria-hidden="true"><use href="#lu-route"/></svg>The faceted router</h2>
+  <p>SKILL.md is a router, not a script. Every request selects the smallest sufficient route:
+  <b>one primary job</b> — the twelve below — combined with <b>at most one base surface</b> that
+  reshapes how the job applies to how the product is actually bought, plus <b>additive overlays</b>
+  when traffic is too small or a model runs the experiment. Read the selected references
+  completely; load one or two, never the whole pack.</p>
+  <div class="tblwrap"><table style="table-layout:fixed">
+    <colgroup><col style="width:16%"><col style="width:44%"><col style="width:40%"></colgroup>
+    <tr><th>facet</th><th>options</th><th>rule</th></tr>
+    <tr>
+      <td class="job">① Primary job</td>
+      <td class="prod"><b>experiment-design-and-feasibility ⭐</b> · growth-model-and-loops · funnel-and-cohort-diagnosis · opportunity-and-prioritization · experiment-readout-and-learning · activation-and-onboarding · conversion-optimization · retention-and-resurrection · referral-and-product-loops · monetization-and-pricing-experiments · product-led-growth · quasi-experiments</td>
+      <td class="canon"><b>Exactly one.</b> Pick the single job the request needs. The flagship answers the question the rest of the field avoids — can this be answered at your scale, and what would a significant result actually be worth. Often the honest answer changes the test, not just the result.</td>
+    </tr>
+    <tr>
+      <td class="job">② Base surface</td>
+      <td class="prod">surface-selfserve <span style="color:var(--muted)">(default)</span> · surface-b2b-sales-assisted · surface-mobile-subscription · surface-marketplace-network</td>
+      <td class="canon"><b>At most one.</b> The surface reshapes what each job means for how the product is bought and used — a marketplace's interference risk, a mobile app's IAP economics. Many questions (the feasibility gate's own arithmetic) are surface-independent.</td>
+    </tr>
+    <tr>
+      <td class="job">③ Additive overlays <span style="color:var(--tok-dim)">⭐</span></td>
+      <td class="prod"><b style="font-family:ui-monospace,Menlo,monospace; color:var(--tok-dim)">overlay-small-sample</b> — traffic or users too small for standard power<br><b style="font-family:ui-monospace,Menlo,monospace; color:var(--tok-dim)">overlay-agentic</b> — a model designs, runs, or reads an experiment</td>
+      <td class="canon"><b>Additive.</b> Each stacks <i>on top of</i> a base surface, never instead of one. Read <code>growth-model-and-loops</code> as a fourth, orthogonal move whenever a claim invokes a named growth-model figure (Balfour, Winters, Kwok, Verna, Eyal, McClure) — it grades and attributes them so the other references need not re-derive it.</td>
+    </tr>
+  </table></div>
+  <div class="note"><b>Every claim on this page is true of the shipped pack.</b> Where a number is
+  cited — the power-table constant, the winner's-curse haircut, the CUPED variance-reduction
+  figures — it carries its named source; calculators are executable and unit-validated against
+  published anchors at import time, never a prose formula this page would then repeat after it
+  drifted.</div>
+</section>
+
+<section id="jobs">
+  <h2><svg class="lu" aria-hidden="true"><use href="#lu-files"/></svg>The twelve primary jobs</h2>
+  <p>Each job is one reference, read fully only when its route is selected. Feasibility is the
+  flagship because every other growth reference that proposes running a test assumes this file's
+  gate has already been cleared. This is the whole funnel-wide surface, not a headline slice.</p>
+  <div class="tblwrap"><table>
+    <tr><th>I need to…</th><th>Read</th><th>Contribution</th></tr>
+    <tr>
+      <td class="job"><svg class="lu" aria-hidden="true" style="color:var(--accent)"><use href="#lu-scale"/></svg> Decide whether a test can be answered at your scale, and what a significant result would actually mean <span style="color:var(--tok-dim)">⭐</span></td>
+      <td><code><a href="https://github.com/gabros20/growth-skill/blob/main/skills/growth/references/experiment-design-and-feasibility.md">experiment-design-and-feasibility.md</a></code></td>
+      <td class="prod"><b>Flagship.</b> The feasibility gate; the derived power table against vendor floors; the metric-skew rule; the Bayes posterior on a "significant" winner; the Ambition Tax; where CUPED fails</td>
+    </tr>
+    <tr>
+      <td class="job"><svg class="lu" aria-hidden="true" style="color:var(--accent)"><use href="#lu-repeat"/></svg> Understand growth as a system before touching a single funnel stage — loops, funnels, and the family's AARRR split</td>
+      <td><code><a href="https://github.com/gabros20/growth-skill/blob/main/skills/growth/references/growth-model-and-loops.md">growth-model-and-loops.md</a></code></td>
+      <td class="prod">Loops vs funnels (Balfour/Winters/Kwok/Chen, 2018) and the Racecar frame correctly attributed to Hockenmaier + Rachitsky, not Balfour; Verna's Five Laws and 3×3 matrix, dated; the K-factor/cycle-time/compounding math the ecosystem never built; reciprocates marketing's AARRR split</td>
+    </tr>
+    <tr>
+      <td class="job"><svg class="lu" aria-hidden="true" style="color:var(--accent)"><use href="#lu-activity"/></svg> Diagnose where a funnel is actually leaking, or which cohort definition to trust</td>
+      <td><code><a href="https://github.com/gabros20/growth-skill/blob/main/skills/growth/references/funnel-and-cohort-diagnosis.md">funnel-and-cohort-diagnosis.md</a></code></td>
+      <td class="prod">The 3-way retention definition — N-day, rolling, survival — and which question each one actually answers</td>
+    </tr>
+    <tr>
+      <td class="job"><svg class="lu" aria-hidden="true" style="color:var(--accent)"><use href="#lu-target"/></svg> Decide what to work on next across a backlog of growth ideas</td>
+      <td><code><a href="https://github.com/gabros20/growth-skill/blob/main/skills/growth/references/opportunity-and-prioritization.md">opportunity-and-prioritization.md</a></code></td>
+      <td class="prod">ICE read skeptically as throughput tooling, not evidence; Verna's combinatorial counter to single-lever prioritization</td>
+    </tr>
+    <tr>
+      <td class="job"><svg class="lu" aria-hidden="true" style="color:var(--accent)"><use href="#lu-search-check"/></svg> Read out a finished experiment, or decide whether a "significant" result is safe to act on</td>
+      <td><code><a href="https://github.com/gabros20/growth-skill/blob/main/skills/growth/references/experiment-readout-and-learning.md">experiment-readout-and-learning.md</a></code></td>
+      <td class="prod">The one-curve peeking reconciliation; the winner's-curse haircut applied at readout; guardrails-before-shipping-a-win; the learning ledger; Twyman's law as a Bayesian prior</td>
+    </tr>
+    <tr>
+      <td class="job"><svg class="lu" aria-hidden="true" style="color:var(--accent)"><use href="#lu-sparkles"/></svg> Improve activation or onboarding, or evaluate a claimed "aha moment"</td>
+      <td><code><a href="https://github.com/gabros20/growth-skill/blob/main/skills/growth/references/activation-and-onboarding.md">activation-and-onboarding.md</a></code></td>
+      <td class="prod">Why CUPED fails for new users — load-bearing for every onboarding test's power math; "aha moment" labeled a folklore term with no traceable origin</td>
+    </tr>
+    <tr>
+      <td class="job"><svg class="lu" aria-hidden="true" style="color:var(--accent)"><use href="#lu-clipboard-list"/></svg> Run or brief a conversion-rate test on a page, form, or button</td>
+      <td><code><a href="https://github.com/gabros20/growth-skill/blob/main/skills/growth/references/conversion-optimization.md">conversion-optimization.md</a></code></td>
+      <td class="prod">The red-button-on-blue-page external-validity lesson; the copy→placement→color test-order rule; form-field-count as a variable, not a rule; the Trustworthy A/B Patterns project</td>
+    </tr>
+    <tr>
+      <td class="job"><svg class="lu" aria-hidden="true" style="color:var(--accent)"><use href="#lu-trending-up"/></svg> Reduce churn, or design a resurrection or win-back approach</td>
+      <td><code><a href="https://github.com/gabros20/growth-skill/blob/main/skills/growth/references/retention-and-resurrection.md">retention-and-resurrection.md</a></code></td>
+      <td class="prod">The Duolingo streak specimen as a fully worked, resolvable example; Sarah Tavel's retention framing; a habit-ethics pointer into monetization's ethics section</td>
+    </tr>
+    <tr>
+      <td class="job"><svg class="lu" aria-hidden="true" style="color:var(--accent)"><use href="#lu-users"/></svg> Design a referral program, or diagnose a growth loop's own math</td>
+      <td><code><a href="https://github.com/gabros20/growth-skill/blob/main/skills/growth/references/referral-and-product-loops.md">referral-and-product-loops.md</a></code></td>
+      <td class="prod">The loop math the ecosystem lacks entirely, applied to a live referral design; "loops" fully disambiguated from loops-over-moats</td>
+    </tr>
+    <tr>
+      <td class="job"><svg class="lu" aria-hidden="true" style="color:var(--accent)"><use href="#lu-coins"/></svg> Test a price, a plan structure, or a packaging change</td>
+      <td><code><a href="https://github.com/gabros20/growth-skill/blob/main/skills/growth/references/monetization-and-pricing-experiments.md">monetization-and-pricing-experiments.md</a></code></td>
+      <td class="prod">Booking's own pricing-test refusal; Van Westendorp's provenance and its stated-preference critique; the subscription dark-patterns table on Mathur CSCW 2019 plus FTC 2022 enforcement</td>
+    </tr>
+    <tr>
+      <td class="job"><svg class="lu" aria-hidden="true" style="color:var(--accent)"><use href="#lu-file-check"/></svg> Evaluate or benchmark a product-led-growth motion</td>
+      <td><code><a href="https://github.com/gabros20/growth-skill/blob/main/skills/growth/references/product-led-growth.md">product-led-growth.md</a></code></td>
+      <td class="prod">Five-field benchmark-provenance discipline (source, sample, method, date, caveat); the Sean Ellis 40% test with the creator's own generalizability caveat</td>
+    </tr>
+    <tr>
+      <td class="job"><svg class="lu" aria-hidden="true" style="color:var(--accent)"><use href="#lu-shuffle"/></svg> Answer a causal question when randomization isn't available</td>
+      <td><code><a href="https://github.com/gabros20/growth-skill/blob/main/skills/growth/references/quasi-experiments.md">quasi-experiments.md</a></code></td>
+      <td class="prod">Precondition checklists in place of numeric floors; Abadie's own warning that a large pre-period can't fix a bad fit; the staggered-DiD structural-invalidity warning</td>
+    </tr>
+  </table></div>
+  <p style="margin-top:12px">Full router table &amp; invariants:
+  <a href="https://github.com/gabros20/growth-skill/blob/main/skills/growth/SKILL.md#route-before-acting">SKILL.md</a>.</p>
+</section>
+
+<section id="surfaces">
+  <h2><svg class="lu" aria-hidden="true"><use href="#lu-layers"/></svg>Four surfaces + two additive overlays</h2>
+  <p>One base surface, at most, reshapes every job for how the product is actually bought and
+  used — the same conversion-test job resolves differently for a marketplace with spillover between
+  arms than for a mobile app's IAP economics. The two overlays are <b>additive</b> — they stack on
+  top of whichever base you picked, never replace it — and carry a distinct violet identity
+  throughout this page, the same convention <code>automation</code>, <code>operate</code>,
+  <code>quality</code>, <code>data</code> and <code>marketing</code> use for their own additive
+  overlays.</p>
+  <div class="overlays">
+    <div class="ov">
+      <h3><svg class="lu" aria-hidden="true"><use href="#lu-route"/></svg>Self-serve SaaS <span class="file">surface-selfserve.md</span></h3>
+      <p class="reshape">The <b>default</b>: anyone can sign up or trial without talking to a
+      human. If a request names no business model, this is what the skill assumes — and it says so
+      rather than stalling for a clarification it doesn't need.</p>
+      <p class="lens"><span class="k">reshapes</span>the funnel as the whole product experience · what "activation" means with no human in the loop</p>
+    </div>
+    <div class="ov">
+      <h3><svg class="lu" aria-hidden="true"><use href="#lu-users"/></svg>B2B sales-assisted <span class="file">surface-b2b-sales-assisted.md</span></h3>
+      <p class="reshape">A rep, a demo, or procurement gates the deal — a human conversation
+      shapes the funnel. This surface names the seam growth draws with <code>sales</code>: pipeline
+      and qualification signal in, an experiment readout out.</p>
+      <p class="lens"><span class="k">reshapes</span>which stage of a sales-assisted funnel is even eligible for a randomized test</p>
+    </div>
+    <div class="ov">
+      <h3><svg class="lu" aria-hidden="true"><use href="#lu-smartphone"/></svg>Mobile subscription <span class="file">surface-mobile-subscription.md</span></h3>
+      <p class="reshape">In-app-purchase economics reshape the test — store fees, platform review
+      cycles, and refund/chargeback dynamics that don't exist on the web.</p>
+      <p class="lens"><span class="k">reshapes</span>power math against the RevenueCat-layer dataset — high-N, low-external-validity, vendor+edition required</p>
+    </div>
+    <div class="ov">
+      <h3><svg class="lu" aria-hidden="true"><use href="#lu-layers"/></svg>Marketplace / network <span class="file">surface-marketplace-network.md</span></h3>
+      <p class="reshape">Supply and demand sit on the same product, so a treatment can leak into
+      control through the marketplace itself — interference, not just noise.</p>
+      <p class="lens"><span class="k">reshapes</span>whether randomization is even valid — diagnose the interference mechanism before picking a design</p>
+    </div>
+    <div class="ov wedge">
+      <h3><svg class="lu" aria-hidden="true"><use href="#lu-scale"/></svg>Small-sample <span class="badge">additive ⭐</span></h3>
+      <p class="reshape">Traffic or users too small for standard power. <b>Stacks on, does not
+      replace.</b> The overlay this pack's flagship gate exists to serve — the three levers (move
+      upstream, swing bigger, skip the test) and the skip-the-test decision rule, taught as
+      equipping an existing practice, never as a refusal.</p>
+      <p class="lens"><span class="k">reshapes</span>which effect sizes are even detectable · what an honest "this needs a bigger bet" looks like as a deliverable</p>
+    </div>
+    <div class="ov wedge">
+      <h3><svg class="lu" aria-hidden="true"><use href="#lu-bot"/></svg>Agentic <span class="badge">additive ⭐</span></h3>
+      <p class="reshape">A model designs, runs, or reads an experiment — not a human reviewing one
+      draft a model produced. <b>Stacks on, does not replace.</b> The deterministic envelope around
+      an agent-decided test: guardrails a model cannot silently loosen mid-run.</p>
+      <p class="lens"><span class="k">reshapes</span>who can peek and when · what's <code>ai</code>'s (the model's own cognition) vs ours (the envelope around a test it runs)</p>
+    </div>
+  </div>
+</section>
+
+<section id="flagship">
+  <h2><svg class="lu" aria-hidden="true"><use href="#lu-scale"/></svg>Experiment design and feasibility — the flagship</h2>
+  <p>Ask an agent whether a test is worth running and it either skips straight to statistics with
+  nowhere to land, or straight to "run an A/B test" with no check on whether the traffic can support
+  one. <b>The gate comes first: can this specific comparison reach a power you'd trust, before a
+  hypothesis or a flag exists.</b> Skip it and you inherit the ecosystem's most common failure mode —
+  even careful incumbent suites go straight from hypothesis to flag to metrics with no sample-size
+  or MDE step in between. The teaching that matters most: <b>halving the effect you want to detect
+  quadruples the traffic you need</b> — at a 5% baseline conversion rate, a +20% relative MDE needs
+  7,457 exposures per arm; +10% needs 29,826 (4.0×); +5% needs 119,303 (4.0× again). Metric choice
+  alone can move that requirement two more orders of magnitude — a skewed metric like
+  revenue-per-user can need ~114,000 where a low-skew metric needs ~1,550, on the same underlying
+  change (Kohavi's skewness rule, KDD 2014).</p>
+  <div class="wedgehead"><svg class="lu" aria-hidden="true"><use href="#lu-shield-alert"/></svg>The Ambition Tax — paid twice, and the two effects multiply, not cancel</div>
+  <div class="wedgebody">
+    <div class="wedgegrid">
+      <div>
+        <h3>Two facts that compound in exactly the wrong direction</h3>
+        <ul class="ladder">
+          <li class="good"><span class="t">fact one</span><span class="d">winning estimates are biased upward: 13% at 80% power with one treatment arm, 21% with two, 25% with three — and 30% if you Bonferroni-correct, because a stricter threshold selects even more extreme draws from the noise (Kohavi, 2024-10-26)</span></li>
+          <li class="warn"><span class="t">fact two</span><span class="d">a small sample forces bigger bets: from the power table, detecting a 2% relative lift needs roughly 4–20× the traffic of detecting a 20% relative lift, at every baseline</span></li>
+          <li class="bad"><span class="t">the tax</span><span class="d">the two effects don't cancel, they multiply — the smaller your sample, the more ambitious your test must be, and the more ambitious your test, the less a significant result on it actually means</span></li>
+        </ul>
+        <p style="font-size:13px; color:var(--muted); margin:0">Kohavi's own floor for e-commerce
+        conversion work is roughly <b>200,000 users</b> for adequate power, stated directly: "the
+        statistics do not support A/B tests with 5,000 users under common goals and assumptions"
+        (2024-10-30). He then names three levers rather than stopping at "you can't test": swing for
+        the fences, move upstream to an earlier metric, or consciously accept a higher false-positive
+        rate — see <code>overlay-small-sample.md</code> for the fuller operating model.</p>
+      </div>
+      <div class="wcol">
+        <h3>What a "significant" result is actually worth</h3>
+        <div class="postbar" aria-hidden="true"><div class="r-in" style="width:38%">π≥1/3 · solid</div><div class="r-edge" style="width:24%">π=10–20%</div><div class="r-out">π=5% · a coin flip</div></div>
+        <div class="poplegend">
+          <span class="pill good"><b>π=50%, 1/3</b> — 94.1%, 88.9% posterior. A coin-flip prior, or Microsoft's reported average (2009, no published denominator)</span>
+          <span class="pill amber"><b>π=20%, 10%</b> — 80.0%, 64.0% posterior. Bing's high and low ends (KDD 2014)</span>
+          <span class="pill bad"><b>π=5%</b> — 45.7% posterior. A dramatic, surprising result deserves a <i>low</i> prior — which makes it <i>less</i> trustworthy at an identical p-value, not more impressive</span>
+        </div>
+      </div>
+    </div>
+    <div class="sharprule"><b>P(true positive | significant) = (1−β)π / [(1−β)π + α(1−π)]</b> — at
+    α=.05, β=.20 (80% power). A "statistically significant winner" is not a fact; it is a posterior,
+    and its trustworthiness is set entirely by a hit rate you knew <i>before</i> you ran the test
+    (Kohavi, <i>Seven Rules of Thumb</i>, KDD 2014, Rule #2).
+      <div class="cc"><span>the same discipline `data`'s SRM check protects at the assignment layer</span><span>two experiments, identical p-value, different priors, different truths</span></div>
+    </div>
+  </div>
+  <p class="pcap"><b>CUPED will not rescue you here.</b> Three real Microsoft experiments showed
+  45%, 52%, and 49% variance reduction with one week of pre-period data — but the same paper's own
+  §5.2.3 reports revenue-per-user reduced by <b>less than 5%</b>, "due to the low correlation." It
+  fails hardest exactly where growth spends most of its effort: new users have a covariate-metric
+  correlation of 0.2–0.4 versus ~40% for existing ones (CUPED's own paper, Eppo, Statsig, and
+  Netflix's KDD 2016 case study all agree), and retention sees small variance reduction for both new
+  <i>and</i> existing users. The small-sample problem cannot be variance-reduced away precisely where
+  activation and retention testing lives — sequential monitoring changes <i>when</i> you find out,
+  not how much data the question needs.</p>
+</section>
+
+<section id="distinct">
+  <h2><svg class="lu" aria-hidden="true"><use href="#lu-search-check"/></svg>What makes this different</h2>
+  <p>Almost every individual fact in this pack exists somewhere else. What does not exist anywhere
+  else is a pack that puts the growth surface and the validity layer <b>in the same repo</b>, and
+  <b>grades</b> every benchmark it leans on rather than repeating it because it sounds measured — so
+  the wedge is named as convergence and provenance discipline, not discovery.</p>
+  <div class="bandgrid">
+    <div class="band sub">
+      <h3><svg class="lu" aria-hidden="true"><use href="#lu-flask"/></svg>Two literatures that never shared a repo — until the gate demanded it</h3>
+      <p class="sub2">The genre teaches statistical rigor with no growth surface attached, or the
+      growth surface — activation, retention, loops, PLG — with no validity layer underneath. Nowhere
+      in that genre does anyone tell an underpowered reader anything but "gather more data" or
+      "redesign" — a refusal, not a redirect.</p>
+      <ul class="subrules">
+        <li><svg class="lu" aria-hidden="true"><use href="#lu-shield-check"/></svg><span><b>the feasibility gate is asked first</b> <span class="d">— before a hypothesis or a flag is written, not discovered later as a diagnostic step you should already have used</span></span></li>
+        <li><svg class="lu" aria-hidden="true"><use href="#lu-scale"/></svg><span><b>a redirect, never a refusal</b> <span class="d">— move upstream, swing for a bigger effect, or document a deliberate skip; the three levers plus the skip-the-test decision rule</span></span></li>
+        <li><svg class="lu" aria-hidden="true"><use href="#lu-search-check"/></svg><span><b>the growth-vs-operate boundary, decided not discovered</b> <span class="d">— a standing threshold on the live system is operate's; the same metric bound to one tested change's decision is growth's</span></span></li>
+      </ul>
+    </div>
+    <div class="band stale">
+      <h3><svg class="lu" aria-hidden="true"><use href="#lu-clipboard-list"/></svg>Every benchmark carries five fields, or it doesn't travel</h3>
+      <p class="sub2">Growth's canon is a small, tightly self-citing cluster of practitioners — the
+      corpus found the same four or five names co-citing each other repeatedly, convenient for
+      consistency and weak as independent evidence. This pack names who actually said what, and
+      when.</p>
+      <ul class="subrules">
+        <li><svg class="lu" aria-hidden="true"><use href="#lu-search"/></svg><span><b>misattribution corrected, on the record</b> <span class="d">— the Racecar Growth Framework is Hockenmaier + Rachitsky, not Balfour; a corrected canon attribution, stated so it isn't repeated</span></span></li>
+        <li><svg class="lu" aria-hidden="true"><use href="#lu-shield-check"/></svg><span><b>win rates never blend</b> <span class="d">— only Microsoft's ~1/3 (all four qualifiers, no published denominator) and Bing's 10–20% are first-party citable; every other famous win-rate figure is never-ship</span></span></li>
+        <li><svg class="lu" aria-hidden="true"><use href="#lu-shield-alert"/></svg><span><b>a disclaimed figure is still a figure</b> <span class="d">— never name a never-ship number in order to forbid it; state the mechanism and point at the primary source instead</span></span></li>
+        <li><svg class="lu" aria-hidden="true"><use href="#lu-file-check"/></svg><span><b>calculators are executable, not prose</b> <span class="d">— power_calc.py, srm_check.py, peeking_table.py, skew_check.py each self-test against a published anchor; two of three incumbent treatments checked this run were wrong, in opposite directions</span></span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="note"><b>Open at scale, not empty.</b> Competent prior art exists — rampstack,
+  GrowthBook, PostHog, coreyhaines31's incumbent pack — and is cited respectfully throughout. The gap
+  this pack fills is that the growth surface and the validity layer have never shared a repo, and
+  that <code>data</code>'s own <code>experiment-measurement-foundations.md</code> explicitly cedes
+  design and interpretation to whoever picks it up. <b>An honest "nobody has measured this, and here
+  is why" is a deliverable, not a failure to produce one.</b></div>
+</section>
+
+<section id="laws">
+  <h2><svg class="lu" aria-hidden="true"><use href="#lu-shield-check"/></svg>The universal invariants</h2>
+  <p>These govern every route, whichever references it loads.</p>
+  <ul class="rules">
+    <li><b><svg class="lu" aria-hidden="true"><use href="#lu-target"/></svg>Say "open at scale," never "empty"</b>Competent prior art exists (rampstack, GrowthBook, PostHog, coreyhaines31) and is cited respectfully; the gap is that the growth surface and the validity layer have never shared a repo.</li>
+    <li><b><svg class="lu" aria-hidden="true"><use href="#lu-file-input"/></svg>Cite `data`'s validity mechanics by name; never re-teach them</b>SRM, CUPED's derivation, and peek-safe method selection live in `data`'s own reference. Growth's job is the other half of a seam `data` already drew in writing.</li>
+    <li><b><svg class="lu" aria-hidden="true"><use href="#lu-scale"/></svg>Small-sample is a redirect, never a refusal</b>Teach the three levers and the skip-the-test decision rule; label validity trade-offs honestly — switching to a proxy metric answers a different question, not a free win.</li>
+    <li><b><svg class="lu" aria-hidden="true"><use href="#lu-shield-alert"/></svg>Win rates never blend</b>Only Microsoft's ~1/3 (all four qualifiers, no published denominator) and Bing's 10–20% are first-party citable; every other famous win-rate figure is never-ship.</li>
+    <li><b><svg class="lu" aria-hidden="true"><use href="#lu-activity"/></svg>Peeking is one curve</b>State how many looks (K), the nominal α, and sidedness every time; a reconciled Armitage-to-Johari curve, never a bare percentage.</li>
+    <li><b><svg class="lu" aria-hidden="true"><use href="#lu-file-check"/></svg>CUPED always travels with its companion figure</b>Lead with Deng/Xu/Kohavi/Walker's 45/52/49%; carry the family's own honestly-labeled low-effect surface alongside it, never contradict it.</li>
+    <li><b><svg class="lu" aria-hidden="true"><use href="#lu-git-fork"/></svg>The growth-vs-operate line is crisp</b>A standing threshold on the live system is `operate`'s; the same metric bound to a single tested change's decision is `growth`'s.</li>
+    <li><b><svg class="lu" aria-hidden="true"><use href="#lu-clipboard-list"/></svg>Calculators are executable and unit-validated</b>Never a prose formula or a hand-built lookup table — two of three incumbent treatments checked this run were wrong, in opposite directions.</li>
+    <li><b><svg class="lu" aria-hidden="true"><use href="#lu-shield-alert"/></svg>A disclaimed figure is still a figure</b>Never name a never-ship number in order to forbid it — state the mechanism and point at the primary source instead.</li>
+  </ul>
+</section>
+
+<section id="artifacts">
+  <h2><svg class="lu" aria-hidden="true"><use href="#lu-file-check"/></svg>What a pass produces</h2>
+  <p>Designs, verdicts and readouts are delivered as documents. Neither is delivered as production
+  code. A growth artifact is incomplete unless it carries the metric and who picked it, the
+  feasibility verdict and what it assumes about scale, every claim with a named proof source and its
+  evidence tier, the OEC and guardrails if an experiment is being designed, the decision rule
+  committed to before the result exists, what the result <i>cannot</i> answer, and the sibling packs
+  it hands to or depends on.</p>
+  <div class="vloop" aria-label="the growth core workflow">
+    <div class="vstep"><span class="n">step 1</span><span class="t"><svg class="lu" aria-hidden="true"><use href="#lu-route"/></svg>route</span><span class="d">one primary job + one base surface; overlays only if they apply; state any surface you assumed</span></div>
+    <div class="vstep"><span class="n">step 2</span><span class="t"><svg class="lu" aria-hidden="true"><use href="#lu-target"/></svg>name the decision</span><span class="d">what's actually being decided, and who owns that decision once the result exists</span></div>
+    <div class="vstep"><span class="n">step 3</span><span class="t"><svg class="lu" aria-hidden="true"><use href="#lu-scale"/></svg>run the gate</span><span class="d">before designing anything further — can this question be answered at your scale, and what would a significant result be worth</span></div>
+    <div class="vstep"><span class="n">step 4</span><span class="t"><svg class="lu" aria-hidden="true"><use href="#lu-search-check"/></svg>grade</span><span class="d">every benchmark, win rate or "best practice" relied on, and where its evidence stops</span></div>
+    <div class="vstep"><span class="n">step 5</span><span class="t"><svg class="lu" aria-hidden="true"><use href="#lu-flask"/></svg>design</span><span class="d">the experiment (or quasi-experimental substitute), OEC and guardrails named up front, on `data`'s certified pipeline</span></div>
+    <div class="vstep"><span class="n">step 6</span><span class="t"><svg class="lu" aria-hidden="true"><use href="#lu-pen-line"/></svg>produce</span><span class="d">the artifact — design, feasibility verdict, readout, or requirements — with a named proof source behind every claim</span></div>
+    <div class="vstep"><span class="n">step 7</span><span class="t"><svg class="lu" aria-hidden="true"><use href="#lu-file-check"/></svg>commit the rule</span><span class="d">state the decision rule before the result exists, and the haircut to apply once it does</span></div>
+    <div class="vstep"><span class="n">step 8</span><span class="t"><svg class="lu" aria-hidden="true"><use href="#lu-git-fork"/></svg>hand off</span><span class="d">a compact handoff when downstream work is expected — paths, owners, residual risk</span></div>
+  </div>
+  <div class="artgrid">
+    <div class="art">
+      <h3><svg class="lu" aria-hidden="true"><use href="#lu-scale"/></svg>power_calc.py</h3>
+      <span class="file">assets/power_calc.py</span>
+      <p>Sample-size and power, <b>unpooled by default</b> (the exact two-sample formula), with a `--pooled` mode. Validated against PostHog's and Booking.com's own published anchors.</p>
+    </div>
+    <div class="art">
+      <h3><svg class="lu" aria-hidden="true"><use href="#lu-shield-check"/></svg>srm_check.py</h3>
+      <span class="file">assets/srm_check.py</span>
+      <p>Sample-ratio-mismatch chi-square test — is the observed assignment split trustworthy before any result is read. Validated against Fabijan et al.'s worked example.</p>
+    </div>
+    <div class="art">
+      <h3><svg class="lu" aria-hidden="true"><use href="#lu-activity"/></svg>peeking_table.py</h3>
+      <span class="file">assets/peeking_table.py</span>
+      <p>The sequential-testing inflated-α curve — how many looks (K), at what nominal α, actually costs. Validated against the Armitage sequential-testing table.</p>
+    </div>
+    <div class="art">
+      <h3><svg class="lu" aria-hidden="true"><use href="#lu-search-check"/></svg>skew_check.py</h3>
+      <span class="file">assets/skew_check.py</span>
+      <p>Kohavi's 355·s² normality floor for skewed metrics, computed from a real sample rather than eyeballed. Validated against Bing's post-erratum skewness table.</p>
+    </div>
+    <div class="art">
+      <h3><svg class="lu" aria-hidden="true"><use href="#lu-clipboard-list"/></svg>Eval suites</h3>
+      <span class="file">evals/routing · evals/stats-cases · evals/never-ship</span>
+      <p>Does the router reach the smallest sufficient reference set (including declining to sibling packs); does the content actually change model behavior on real feasibility/peeking prompts; does a disclaimed figure ever resurface, even inside a correction of it.</p>
+    </div>
+  </div>
+</section>
+
+<section id="handoff">
+  <h2><svg class="lu" aria-hidden="true"><use href="#lu-git-fork"/></svg>The handoff seams</h2>
+  <p>growth operates independently when invoked alone, and uses compatible upstream artifacts
+  without silently overriding them. It is rarely terminal: <code>handoff.md</code> maps every seam
+  between this pack and the rest of the family from growth's side — what it produces for each
+  sibling, what it consumes, and the line it does not cross.</p>
+  <div class="seam">
+    <div class="seambox">
+      <h3><svg class="lu" aria-hidden="true"><use href="#lu-pen-line"/></svg>growth emits</h3>
+<pre class="seamyaml"><span class="k">metric</span>: <span class="v">&lt;who picked it&gt;</span>
+<span class="req">feasibility_verdict</span>: <span class="v">&lt;can this be</span>
+  <span class="v">answered, at what cost&gt;</span>
+<span class="req">claims</span>: <span class="v">[claim, named proof source,</span>
+  <span class="v">evidence tier]</span>
+<span class="k">oec_and_guardrails</span>: <span class="v">&lt;if an</span>
+  <span class="v">experiment is designed&gt;</span>
+<span class="req">decision_rule</span>: <span class="v">&lt;committed before</span>
+  <span class="v">the result exists&gt;</span>
+<span class="req">cannot_answer</span>: <span class="v">&lt;what the result</span>
+  <span class="v">does not prove&gt;</span></pre>
+    </div>
+    <div class="seamarrows"><span>→</span><span>→</span></div>
+    <div class="downstream">
+      <div class="seambox mid">
+        <h3><svg class="lu" aria-hidden="true"><use href="#lu-activity"/></svg>data</h3>
+        <p>An experiment design naming its assignment population, exposure logic, and OEC/guardrails
+        for <code>data</code> to certify. Growth does not re-teach or re-implement SRM, CUPED
+        mechanics, or peek-safe method selection — <code>data</code> cedes design and interpretation
+        to growth explicitly, and growth cites it by name rather than re-deriving the mechanics.</p>
+      </div>
+      <div class="seambox mid">
+        <h3><svg class="lu" aria-hidden="true"><use href="#lu-megaphone"/></svg>marketing <span style="color:var(--muted); font-weight:400">(lateral)</span></h3>
+        <p>Experiment readouts and results on a hypothesis marketing proposed. Growth never creates
+        demand, chooses channels, or writes positioning — it evaluates the experiments marketing's
+        hypotheses generate, and never reports a readout as marketing's own finding.</p>
+      </div>
+      <div class="seambox mid">
+        <h3><svg class="lu" aria-hidden="true"><use href="#lu-layers"/></svg>operate</h3>
+        <p>The evidence-class scope of a rollout that is also an experiment, and the readout once it
+        concludes. The crisp rule: a standing threshold on the live system is <code>operate</code>'s;
+        the same metric bound to one tested change's decision is <code>growth</code>'s — a ramp
+        proceeds on the null, an experiment proceeds on a rejected null.</p>
+      </div>
+    </div>
+  </div>
+  <p class="seamnote"><svg class="lu" aria-hidden="true"><use href="#lu-shield-alert"/></svg><span><b>The AARRR note.</b> A practitioner who knows Acquisition → Activation → Retention → Referral → Revenue will notice this pack starts at Activation, not Acquisition — a deliberate seam, not a gap. <b>AARRR spans three packs:</b> <code>marketing</code> owns Acquisition — channels, positioning, demand; <code>growth</code> owns the experiments that improve conversion across the whole funnel — Activation, Referral loop design and math, and Retention <i>experimentation</i>; <code>success</code> owns Retention <i>execution</i> — the onboarding education and retention communications a growth test showed were worth sending. See <code>growth-model-and-loops.md</code> for the full reciprocation of marketing's own shipped note.</span></p>
+  <p style="margin-top:22px; font-size:13.5px; color:var(--muted); max-width:none">The rest of the
+  family — each an independently installable pack with its own guide:</p>
+  <div class="family">
+    <a href="https://product-skill.vercel.app" target="_blank" rel="noopener"><span class="st">/</span>product</a>
+    <a href="https://designskill.vercel.app" target="_blank" rel="noopener"><span class="st">/</span>design</a>
+    <a href="https://architecture-skill.vercel.app" target="_blank" rel="noopener"><span class="st">/</span>architecture</a>
+    <a href="https://frontendengskill.vercel.app" target="_blank" rel="noopener"><span class="st">/</span>frontend</a>
+    <a href="https://backendengskill.vercel.app" target="_blank" rel="noopener"><span class="st">/</span>backend</a>
+    <a href="https://aiengskill.vercel.app" target="_blank" rel="noopener"><span class="st">/</span>ai</a>
+    <a href="https://data-skill.vercel.app" target="_blank" rel="noopener"><span class="st">/</span>data</a>
+    <a href="https://automation-skill.vercel.app" target="_blank" rel="noopener"><span class="st">/</span>automation</a>
+    <a href="https://quality-skill.vercel.app" target="_blank" rel="noopener"><span class="st">/</span>quality</a>
+    <a href="https://operate-skill.vercel.app" target="_blank" rel="noopener"><span class="st">/</span>operate</a>
+    <a href="https://marketing-skill.vercel.app" target="_blank" rel="noopener"><span class="st">/</span>marketing</a>
+    <span class="unshipped">sales · success — seams declared, packs not yet shipped</span>
+  </div>
+</section>
+
+<section id="start">
+  <h2><svg class="lu" aria-hidden="true"><use href="#lu-file-input"/></svg>Start here</h2>
+  <p>Install once. It's a plain <code>SKILL.md</code> router — no flags, no config, no fixed
+  pipeline — so it activates on natural-language phrasing ("is a 3% lift worth testing at our
+  traffic," "we peeked at this four times, is it safe to ship," "design a referral program and check
+  the loop math") rather than a fixed command.</p>
+  <div class="term"><span class="c"># skills.sh ecosystem</span>
+npx skills add gabros20/growth-skill -g -y
+
+<span class="c"># clone + manual copy</span>
+git clone https://github.com/gabros20/growth-skill
+cp -R growth-skill/skills/growth ~/.claude/skills/growth
+
+<span class="c"># use — natural language, any host</span>
+<span class="p">/growth</span> is a 3% lift on our signup form worth testing, given we get 400 signups a month
+<span class="p">/growth</span> diagnose why activation drops between signup and first value
+<span class="p">/growth</span> we can't hit standard sample-size floors — what's actually worth testing at our scale</div>
+  <p style="margin-top:14px">The same install runs on any <a href="https://agentskills.io">Agent&nbsp;Skills</a>
+  host. Codex triggers with <code>$growth</code>; manual copy into any client's skills directory
+  also works.</p>
+  <details class="disc">
+    <summary>what's in the repo</summary>
+    <div>
+      <div class="files"><span class="hl">skills/growth/</span>           <span class="d">the skill: SKILL.md (router) + 19 references/ + 4 self-testing assets/ + evals/</span>
+<span class="hl">research/</span>                 <span class="d">multi-channel research corpora + build-gate synthesis</span>
+<span class="hl">site/</span>                     <span class="d">this guide — deploys to growth-skill.vercel.app</span>
+README.md · SOURCES.md · LICENSE</div>
+      <p>More detail: <a href="https://github.com/gabros20/growth-skill/blob/main/skills/growth/SKILL.md">SKILL.md</a> ·
+      <a href="https://github.com/gabros20/growth-skill/blob/main/SOURCES.md">SOURCES.md</a> — source attribution, licensing rule, and the numbers this pack refuses to ship.</p>
+    </div>
+  </details>
+</section>
+
+<footer>
+  <span><span class="mono">/growth</span> — improve acquisition, activation, retention, referral, and revenue</span>
+  <span><a href="https://github.com/gabros20/growth-skill">github.com/gabros20/growth-skill</a> · <a href="/llms.txt">llms.txt</a> · MIT</span>
+</footer>
+</div>
+<script>
+(function () {
+  // Progressive enhancement over the static router fallback above: swaps in the hero Remotion
+  // video (light/dark). On any load error it removes the slot, leaving the static router in place.
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  if (innerWidth < 720) return; // the static router reads better on phones
+  var wrap = document.getElementById("vidwrap");
+  if (!wrap || !document.createElement("video").canPlayType) return;
+  var mq = matchMedia("(prefers-color-scheme: dark)");
+  var v = document.createElement("video");
+  v.muted = true;
+  v.loop = true;
+  v.autoplay = true;
+  v.playsInline = true;
+  v.setAttribute("playsinline", "");
+  v.setAttribute("aria-label", "The growth skill in motion: the instinct that a test isn't worth running because traffic is too low gets corrected into a sharper question, checked rather than declared, before a hypothesis or a flag exists; halving the detectable effect quadruples the traffic a test needs, shown as three bars at a five percent baseline conversion rate going from about seventy four hundred to about thirty thousand to about one hundred nineteen thousand exposures per arm; the flagship centerpiece is the Ambition Tax, where winning estimates are biased upward by thirteen to thirty percent depending on arm count and correction, a small sample forces a bigger bet, and the two effects multiply rather than cancel, read against a Bayes posterior table showing a significant result is worth ninety four percent trust at a coin flip prior and only forty six percent at a bold surprising one; the faceted router composes one primary job of twelve with at most one base surface of four plus two additive overlays for small-sample traffic and agent-run experiments; CUPED, the field's most-cited fix for small samples, is graded honestly as real on the primary result, under five percent on revenue per user by its own source paper, and failing for both new users and retention, exactly where growth spends its effort; and the handoff carries a feasibility verdict, guardrails and a decision rule to data, marketing and operate, while growth ships no production code and never reports a readout as another pack's finding.");
+  v.addEventListener("loadeddata", function () { document.body.classList.add("has-vid"); });
+  v.addEventListener("error", function () { wrap.remove(); });
+  function apply() {
+    var theme = document.documentElement.getAttribute("data-theme") || (mq.matches ? "dark" : "light");
+    v.poster = "assets/hero-" + theme + "-poster.png";
+    v.src = "assets/hero-" + theme + ".mp4";
+    v.play && v.play().catch(function () {});
+  }
+  apply();
+  mq.addEventListener && mq.addEventListener("change", apply);
+  wrap.appendChild(v);
+})();
+</script>
+</body>
+</html>
