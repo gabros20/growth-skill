@@ -1,6 +1,6 @@
 # growth — Growth
 
-**Visual guide:** [growth-skill.vercel.app](https://growth-skill.vercel.app)
+**Visual guide:** [growthskill.vercel.app](https://growthskill.vercel.app)
 
 Improve acquisition-to-revenue conversion through honest experimentation — the feasibility gate
 (can this be answered at your scale), experiment design, funnel diagnosis, activation, conversion
