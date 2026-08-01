@@ -159,7 +159,7 @@ winning test becomes a rollout.
 | `product` | Shape | [gabros20/product-skill](https://github.com/gabros20/product-skill) |
 | `design` | Shape | [gabros20/design-skill](https://github.com/gabros20/design-skill) |
 | `architecture` | Shape | [gabros20/architecture-skill](https://github.com/gabros20/architecture-skill) |
-| `frontend` | Build | [gabros20/frontend-skill](https://github.com/gabros20/frontend-skill) |
+| `frontend` | Build | [frontendengskill.vercel.app](https://frontendengskill.vercel.app) |
 | `backend` | Build | [gabros20/backend-skill](https://github.com/gabros20/backend-skill) |
 | `data` | Build | [gabros20/data-skill](https://github.com/gabros20/data-skill) |
 | `ai` | Build | [gabros20/ai-skill](https://github.com/gabros20/ai-skill) |

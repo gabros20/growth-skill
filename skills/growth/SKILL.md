@@ -196,7 +196,7 @@ Before completion:
 
 The routing tables above link all 19 references. Assets are runnable, self-tested calculators:
 [power_calc.py](assets/power_calc.py) · [srm_check.py](assets/srm_check.py) ·
-[peeking_table.py](assets/peeking_table.py) — each validated against a published anchor at
-import time. Eval suites live in [evals/](evals/).
+[peeking_table.py](assets/peeking_table.py) · [skew_check.py](assets/skew_check.py) — each
+validated against a published anchor at import time. Eval suites live in [evals/](evals/).
 
 Attribution, licences, and what this pack claims for itself — [SOURCES.md](../../SOURCES.md)
