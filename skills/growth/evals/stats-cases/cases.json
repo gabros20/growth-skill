@@ -1,0 +1,62 @@
+[
+  {
+    "id": "feasibility-gate-refuses-flat-floor-and-redirects",
+    "prompt": "We get about 2,000 visitors a month to our pricing page. I want to A/B test a new headline against the old one and see if conversion goes up. How many visitors do I need and how long should I run it?",
+    "assertions": [
+      "Asks or states the baseline conversion rate and the minimum relative lift worth detecting before giving any sample-size number — does not answer with a single portable floor",
+      "If a sample size is computed, shows or references the derived power table/constant rather than asserting a bare number with no stated alpha/power",
+      "Does not offer any flat per-variant conversion-count floor as sufficient — the never-ship suite carries the exact propagated figures this response must not reproduce",
+      "At this reader's traffic, states plainly that a small relative lift (e.g. 2-5%) is not detectable in a reasonable timeframe, with the arithmetic shown, not just asserted",
+      "Offers at least two of the three redirects — swing for a bigger effect, move to an upstream/proxy metric with its validity trade named, or skip the test — rather than stopping at 'you don't have enough traffic'",
+      "If skipping the test is offered, states the reversible/cheap-vs-expensive-to-maintain distinction rather than a bare 'don't test'",
+      "Does not cite a win rate (e.g. 'most tests fail so don't bother') as a reason not to test"
+    ]
+  },
+  {
+    "id": "feasibility-gate-catches-skewed-revenue-metric",
+    "prompt": "I want to A/B test a checkout flow change and measure it by revenue per user, since that's what actually matters to the business.",
+    "assertions": [
+      "Flags that revenue-per-user is a skewed metric and that the standard power table is a lower bound, not the binding constraint, before accepting it as the success metric",
+      "Names the skewness-dependent sample-size rule (355 x s^2, or equivalent framing) and instructs the reader to check their own metric's skewness rather than asserting a specific number of users as required",
+      "Does not present '114k' or any other specific figure from Bing's table as a portable requirement for this reader's site",
+      "Offers an upstream or capped alternative metric as a way to lower the required sample, and names what is lost by switching (a different question, not a free win)",
+      "Does not claim CUPED or variance reduction solves the skew/sample-size problem without qualifying which metrics it does and does not help"
+    ]
+  },
+  {
+    "id": "peeking-case-daily-checks-before-planned-end",
+    "prompt": "Our A/B test has been running for a week and I've been checking the dashboard every day. It just crossed p<0.05 today. Can we call it and ship the winner?",
+    "assertions": [
+      "States that continuously checking before a stopping rule inflates the false-positive rate, and frames the question as 'how many times did you look', not a vague peeking warning",
+      "States or asks for K (the number of looks) and whether the test is one- or two-sided before treating the p-value as trustworthy",
+      "Does not state a specific inflated-alpha figure detached from its K (e.g. does not assert an alpha-at-5-looks value without deriving or sourcing it correctly)",
+      "If a figure IS given for this reader's situation (roughly 5-7 looks at nominal alpha=0.05, two-sided), it is close to the Armitage value the pack's peeking_table.py reproduces (~0.142 at K=5), and is not a substantially larger value mislabelled as the 5-look figure",
+      "Does not claim that using a Bayesian dashboard/tool makes continuous peeking safe",
+      "Recommends either a pre-registered fixed horizon or a named sequential/always-valid method going forward, and names that the specific implementation choice belongs to data's measurement-validity reference, not this pack",
+      "Applies a haircut to the winning estimate before treating it as the true effect size, and states the haircut is a downward correction, never used to justify inflating a disappointing result",
+      "Does not recommend shipping the win before guardrail metrics have been checked"
+    ]
+  },
+  {
+    "id": "peeking-case-informal-sequential-monitoring-not-a-power-cost",
+    "prompt": "Someone told me that checking results as you go (sequential testing) costs statistical power compared to just waiting for a fixed sample size. Is that true? Should we avoid it?",
+    "assertions": [
+      "Does not simply confirm the folk claim; states that under realistic conditions (effect size not known precisely in advance) a proper sequential/always-valid method often needs fewer samples than a fixed-horizon test, not more",
+      "Distinguishes 'checking in without any correction' (the peeking problem, inflates false positives) from 'a named sequential method with a stopping rule' (does not require waiting for a fixed sample and does not inflate false positives) — does not conflate the two",
+      "Does not present a specific sequential-testing implementation's mechanics (e.g. how a specific vendor's method works internally) as this pack's content — routes implementation/method selection to data's measurement-validity reference",
+      "States the trade a sequential/always-valid method does make (wider confidence intervals) rather than implying it is free"
+    ]
+  },
+  {
+    "id": "quasi-experiment-no-numeric-floor",
+    "prompt": "We changed pricing for every customer at once instead of running an A/B test. How do we figure out whether it actually worked?",
+    "assertions": [
+      "Does not invent or assert a numeric sample-size or time-period floor for a quasi-experimental method",
+      "Reaches for a precondition checklist (e.g. a comparable pre-period trend, a plausible control/comparison group) rather than treating 'we have before/after data' as sufficient on its own",
+      "Names at least one concrete quasi-experimental method appropriate to a single simultaneous change with no held-out control (e.g. interrupted time series or a comparison against a similar untreated segment), or explicitly states the limits when no comparison group exists at all",
+      "Does not claim quasi-experimental methods fully substitute for randomization without naming the assumption that makes the estimate valid (e.g. parallel trends) and what breaks it",
+      "If a staggered rollout is suggested as a fix, does not treat it as automatically valid — names the staggered-DiD structural-invalidity risk rather than assuming staggering alone solves it",
+      "Does not claim a large pre-period (long history before the change) can compensate for a poor comparison-group fit"
+    ]
+  }
+]

@@ -1,0 +1,95 @@
+[
+  {
+    "id": "never-ship-peeking-call-it-early",
+    "note": "Modeled directly on coreyhaines31/marketingskills' ab-testing eval (skills-report.md §3), which we verified is a genuine behavioral guard, not a passing mention, at 42.6k stars. Credited, not copied verbatim.",
+    "prompt": "Our test has been running for 3 days and Variant B is winning with 95% confidence. Should we call it?",
+    "forbidden_strings": [],
+    "assertions": [
+      "Explains that checking before a pre-registered stopping point inflates the false-positive rate beyond the nominal 5%",
+      "States or asks for the number of looks (K) taken so far and the nominal alpha, framing peeking as 'how many times did you look' rather than a vague warning",
+      "Mentions a sequential or always-valid testing method as the structural alternative to fixed-horizon peeking, and routes the specific method's mechanics to data's experiment-measurement-foundations.md rather than teaching them here",
+      "Does not call the test decided on day 3 without addressing the stopping-rule question first",
+      "Does not quote a specific inflated-alpha number without deriving or correctly sourcing it for the actual K involved"
+    ]
+  },
+  {
+    "id": "never-ship-peeking-023-at-5-looks",
+    "prompt": "I saw a skill claim peeking inflates alpha to 0.23 at 5 interim checks — is that the number I should use for a test I've looked at 5 times?",
+    "forbidden_strings": ["0.23"],
+    "assertions": [
+      "Does not restate '0.23' anywhere in the response, even to correct it",
+      "States the correct Armitage-derived figure for 5 equally spaced looks at nominal alpha=0.05 two-sided (approximately 0.14), sourced or computed via peeking_table.py, rather than repeating the wrong number to contrast it",
+      "Explains the mechanism of the error (the quoted figure belongs near 16 looks, not 5) without quoting the wrong figure itself"
+    ]
+  },
+  {
+    "id": "never-ship-flat-conversion-floor",
+    "prompt": "Someone told me 100 conversions per variant is the standard floor for a trustworthy A/B test result — can I use that rule?",
+    "forbidden_strings": ["100 conversions per variant", "100 conversions"],
+    "assertions": [
+      "Does not restate the '100 conversions per variant' figure anywhere in the response, even while rejecting it",
+      "States that required sample size depends on baseline rate, MDE, alpha, and power rather than any fixed conversions-per-variant number",
+      "Points to power_calc.py or the derived power table instead of confirming or quoting the flat floor"
+    ]
+  },
+  {
+    "id": "never-ship-monthly-conversions-floor-spread",
+    "prompt": "What's a good monthly-conversions floor to trust a test result — I've heard numbers anywhere from a couple hundred to a few thousand?",
+    "forbidden_strings": ["5,000 monthly conversions", "5000 monthly conversions", "200 monthly conversions"],
+    "assertions": [
+      "Does not assert or repeat any specific monthly-conversions floor as a portable number",
+      "States that a portable monthly-conversions floor doesn't exist independent of baseline rate and target MDE, and that published figures in this range disagree sharply with each other",
+      "Redirects to computing the actual requirement from the reader's own baseline and MDE via power_calc.py"
+    ]
+  },
+  {
+    "id": "never-ship-experiment-fail-rate",
+    "prompt": "I keep hearing that 80% of experiments fail, or alternatively that it's more like a 33% success rate — which is right, and should that change whether we bother testing?",
+    "forbidden_strings": ["80% of experiments fail", "80% of tests fail", "33% success rate", "~33% success rate"],
+    "assertions": [
+      "Does not affirm, average, or restate either the '80% fail' or the '~33% success rate' figures",
+      "States that only Microsoft's ~1/3 (with its four stated qualifiers and no published denominator) and Bing's 10-20% are first-party citable win-rate figures, and that they must never be blended with each other or with other quoted percentages",
+      "Does not treat any fail/win rate as a reason to skip testing"
+    ]
+  },
+  {
+    "id": "never-ship-vendor-outcome-attributions",
+    "prompt": "Is it true that Netflix says 90% of what they try is wrong, Booking.com fails on about 90% of experiments, and Google only saw 10% of its 12,000 experiments lead to a change?",
+    "forbidden_strings": ["90% of what they try is wrong", "90% of experiments fail", "10% led to changes", "12,000 experiments"],
+    "assertions": [
+      "Does not restate any of the three attributed figures as a usable or citable number, even to debunk them individually",
+      "States that the Netflix figure traces to a book author's characterization rather than a Netflix statement, the Booking figure is untraceable to any Booking-authored source, and the Google figure comes from a non-Google publication — without quoting the numbers themselves",
+      "Does not substitute any of the three as evidence for or against a general experimentation fail rate"
+    ]
+  },
+  {
+    "id": "never-ship-dropbox-and-churn-dollar-figures",
+    "prompt": "Can I cite Dropbox's referral program driving 3,900% signup growth, or the $129B industry figure for involuntary churn, in a growth deck?",
+    "forbidden_strings": ["3,900%", "3900%", "$129B", "129 billion"],
+    "assertions": [
+      "Does not restate either the growth percentage or the dollar figure, even inside an explanation of why it shouldn't be used",
+      "Flags that the Dropbox case is reported with more than one inconsistent figure across sources that repeat it",
+      "Recommends citing only what the reader can independently verify about their own program rather than an industry-wide figure of this kind"
+    ]
+  },
+  {
+    "id": "never-ship-duolingo-test-count-and-reichheld",
+    "prompt": "I want to open a pitch deck with 'Duolingo runs 500 A/B tests a quarter' and the classic stat that a 5% retention improvement drives 25-95% more profit — good hooks?",
+    "forbidden_strings": ["500 A/B tests", "500 tests a quarter", "25-95%", "25–95%"],
+    "assertions": [
+      "Does not restate the Duolingo test-count figure or the retention-to-profit percentage range, even while explaining why they're weak",
+      "States that the Duolingo figure is untraced to any primary Duolingo source and the retention/profit figure is a long-standing falsification-strip target that should be traced before any use, without quoting either number",
+      "Does not offer either figure as a usable hook even with a caveat attached"
+    ]
+  },
+  {
+    "id": "never-ship-dau-mau-and-cuped-range",
+    "prompt": "Is 20% DAU/MAU considered good, and can I say CUPED cuts variance by 30-50%?",
+    "forbidden_strings": ["20% DAU/MAU", "30-50%", "30–50%"],
+    "assertions": [
+      "Does not restate the DAU/MAU threshold or the CUPED range, even while rejecting them",
+      "States that the DAU/MAU figure is untraced across roughly eight vendor blogs despite being commonly attributed to Facebook, without repeating the number",
+      "Leads any CUPED variance-reduction claim with the primary paper's own scoped figures (45/52/49%, with revenue-per-user under 5%) rather than a smoothed range, and does not present the smoothed range as an alternative framing"
+    ]
+  }
+]

@@ -1,0 +1,329 @@
+[
+  {
+    "id": "feasibility-question-reaches-flagship",
+    "prompt": "We want to run an A/B test on our pricing page headline. How many visitors do we need and how long should we run it?",
+    "expected_references": [
+      "references/experiment-design-and-feasibility.md"
+    ],
+    "forbidden_references": [
+      "references/experiment-readout-and-learning.md"
+    ],
+    "must_include": [
+      "Reaches the feasibility-gate flagship rather than the readout/interpretation reference \u2014 this is a before-you-run question, not an after-the-fact one"
+    ]
+  },
+  {
+    "id": "small-traffic-overlay-stacks-on-base-surface",
+    "prompt": "We're a small self-serve SaaS with about 3,000 signups a month. Can we A/B test a new onboarding flow, and if so how?",
+    "expected_references": [
+      "references/surface-selfserve.md",
+      "references/overlay-small-sample.md",
+      "references/activation-and-onboarding.md"
+    ],
+    "forbidden_references": [
+      "references/quasi-experiments.md"
+    ],
+    "must_include": [
+      "surface-selfserve.md is still read even though overlay-small-sample.md is additive on top of it, never a replacement for the base surface",
+      "Reaches activation-and-onboarding.md for the CUPED-fails-for-new-users content rather than treating overlay-small-sample.md alone as sufficient"
+    ]
+  },
+  {
+    "id": "agent-monitoring-reaches-overlay-agentic",
+    "prompt": "Our agent watches the experiment dashboard and wants to auto-stop the test the moment it crosses significance. Is that okay?",
+    "expected_references": [
+      "references/overlay-agentic.md",
+      "references/experiment-readout-and-learning.md"
+    ],
+    "forbidden_references": [
+      "references/experiment-design-and-feasibility.md"
+    ],
+    "must_include": [
+      "States the agent may not stop or ship on an interim peek without a peek-safe method configured from the start"
+    ]
+  },
+  {
+    "id": "daily-peeking-reaches-readout",
+    "prompt": "We've been checking our test's dashboard every day and it just crossed p<0.05. Can we ship the winner?",
+    "expected_references": [
+      "references/experiment-readout-and-learning.md"
+    ],
+    "forbidden_references": [
+      "references/experiment-design-and-feasibility.md"
+    ],
+    "must_include": [
+      "Frames the answer around how many times the dashboard was checked (K), not a bare peeking warning"
+    ]
+  },
+  {
+    "id": "funnel-drop-reaches-funnel-file",
+    "prompt": "Our signup-to-paid funnel has a huge drop at step 3. Which retention definition should I use to check if it's actually a cohort problem?",
+    "expected_references": [
+      "references/funnel-and-cohort-diagnosis.md"
+    ],
+    "forbidden_references": [
+      "references/retention-and-resurrection.md"
+    ],
+    "must_include": [
+      "Names at least one of the three retention definitions (N-day, rolling, survival) and which question it answers"
+    ]
+  },
+  {
+    "id": "ice-prioritization-reaches-opportunity-file",
+    "prompt": "We ranked 20 growth ideas with an ICE score. Is that a sound way to decide what to build next?",
+    "expected_references": [
+      "references/opportunity-and-prioritization.md"
+    ],
+    "forbidden_references": [
+      "references/growth-model-and-loops.md"
+    ],
+    "must_include": [
+      "Treats ICE skeptically as throughput tooling rather than as evidence a ranked idea will actually work"
+    ]
+  },
+  {
+    "id": "winback-and-streak-reaches-retention-file",
+    "prompt": "We want to build a win-back campaign for lapsed users and are considering a streak feature to boost retention. Good ideas?",
+    "expected_references": [
+      "references/retention-and-resurrection.md"
+    ],
+    "forbidden_references": [
+      "references/activation-and-onboarding.md"
+    ],
+    "must_include": [
+      "Points to monetization-and-pricing-experiments.md's ethics section for habit-design ethics rather than re-teaching dark-patterns/habit ethics in this reference"
+    ]
+  },
+  {
+    "id": "referral-program-reaches-referral-file",
+    "prompt": "We want to build a referral program. How do we know whether it'll actually compound growth over time?",
+    "expected_references": [
+      "references/referral-and-product-loops.md"
+    ],
+    "forbidden_references": [
+      "references/growth-model-and-loops.md"
+    ],
+    "must_include": [
+      "Applies loop math (K-factor, cycle time, or compounding arithmetic) rather than treating 'we have a referral program' as sufficient"
+    ]
+  },
+  {
+    "id": "pricing-test-reaches-monetization-file",
+    "prompt": "We want to test a new pricing page using a Van Westendorp survey. Good approach?",
+    "expected_references": [
+      "references/monetization-and-pricing-experiments.md"
+    ],
+    "forbidden_references": [
+      "references/conversion-optimization.md"
+    ],
+    "must_include": [
+      "States the stated-preference critique of Van Westendorp alongside its provenance, not just its procedure"
+    ]
+  },
+  {
+    "id": "plg-benchmark-reaches-plg-file",
+    "prompt": "Is a 40% 'very disappointed' Sean Ellis score good for our PLG product?",
+    "expected_references": [
+      "references/product-led-growth.md"
+    ],
+    "forbidden_references": [
+      "references/activation-and-onboarding.md"
+    ],
+    "must_include": [
+      "Carries Sean Ellis's own generalizability caveat on the 40% test alongside the figure, not the figure alone"
+    ]
+  },
+  {
+    "id": "no-randomization-reaches-quasi-file",
+    "prompt": "We rolled out a price change to every customer at once instead of running an A/B test. How do we know if it worked?",
+    "expected_references": [
+      "references/quasi-experiments.md"
+    ],
+    "forbidden_references": [
+      "references/experiment-design-and-feasibility.md"
+    ],
+    "must_include": [
+      "Reaches for a precondition checklist rather than inventing a numeric sample-size floor for a quasi-experimental method"
+    ]
+  },
+  {
+    "id": "b2b-sales-gate-reaches-surface-file",
+    "prompt": "We're a B2B SaaS where every deal goes through a sales rep demo before signup. How should we think about testing here?",
+    "expected_references": [
+      "references/surface-b2b-sales-assisted.md"
+    ],
+    "forbidden_references": [
+      "references/surface-selfserve.md"
+    ],
+    "must_include": [
+      "Does not default to the self-serve surface once a human-gated sales conversation is stated explicitly"
+    ]
+  },
+  {
+    "id": "mobile-iap-reaches-surface-file",
+    "prompt": "We run IAP subscriptions in our iOS app and want to test a paywall design. What should I know about the data?",
+    "expected_references": [
+      "references/surface-mobile-subscription.md"
+    ],
+    "forbidden_references": [
+      "references/surface-selfserve.md"
+    ],
+    "must_include": [
+      "Frames the RevenueCat-layer dataset as high-N but low-external-validity, requiring vendor and edition-year on every figure"
+    ]
+  },
+  {
+    "id": "marketplace-interference-reaches-surface-file",
+    "prompt": "We're a two-sided marketplace and worried a supply-side test will bias results because sellers interact with each other. What do we do?",
+    "expected_references": [
+      "references/surface-marketplace-network.md"
+    ],
+    "forbidden_references": [
+      "references/quasi-experiments.md"
+    ],
+    "must_include": [
+      "Diagnoses the interference mechanism first rather than defaulting to a specific fix like switchbacks"
+    ]
+  },
+  {
+    "id": "boundary-srm-cuped-mechanics-declines-to-data",
+    "prompt": "Explain exactly how the chi-square test for sample ratio mismatch works, and walk me through CUPED's variance-reduction formula step by step.",
+    "expected_references": [],
+    "expected_decline_to": "data",
+    "forbidden_references": [
+      "references/experiment-design-and-feasibility.md",
+      "references/experiment-readout-and-learning.md"
+    ],
+    "must_include": [
+      "Names data's experiment-measurement-foundations.md by name as the owner of SRM and CUPED mechanics rather than re-deriving either formula here"
+    ]
+  },
+  {
+    "id": "boundary-channel-spend-declines-to-marketing",
+    "prompt": "Which paid channel should we put more budget behind to get more signups into the top of our funnel?",
+    "expected_references": [],
+    "expected_decline_to": "marketing",
+    "forbidden_references": [
+      "references/growth-model-and-loops.md"
+    ],
+    "must_include": [
+      "Declines to make a channel or spend allocation decision and routes it to marketing",
+      "Offers to design or size an experiment testing a channel hypothesis marketing has already proposed, rather than originating the channel choice itself"
+    ]
+  },
+  {
+    "id": "boundary-standing-threshold-declines-to-operate",
+    "prompt": "We want a permanent error-rate threshold that pages on-call whenever a live production feature regresses. How should we design that?",
+    "expected_references": [],
+    "expected_decline_to": "operate",
+    "forbidden_references": [
+      "references/experiment-design-and-feasibility.md"
+    ],
+    "must_include": [
+      "States the standing-threshold-on-a-live-system vs. single-tested-change distinction and routes the standing threshold to operate",
+      "Does not treat a permanent production alert threshold as an experiment design question"
+    ]
+  },
+  {
+    "id": "boundary-pricing-tiers-declines-to-product",
+    "prompt": "What should our three pricing tiers be, and what should each one cost?",
+    "expected_references": [],
+    "expected_decline_to": "product",
+    "forbidden_references": [
+      "references/product-led-growth.md"
+    ],
+    "must_include": [
+      "Declines to set tier structure or price points and routes that decision to product",
+      "Offers to design the experiment testing a tier or price product has already chosen, not to choose it"
+    ]
+  },
+  {
+    "id": "boundary-page-layout-declines-to-design",
+    "prompt": "Lay out the sections of our new pricing-page hero for the test variant we're about to run.",
+    "expected_references": [],
+    "expected_decline_to": "design",
+    "forbidden_references": [
+      "references/conversion-optimization.md"
+    ],
+    "must_include": [
+      "Declines page composition and layout and routes it to design",
+      "States that growth defines and evaluates the variant while design composes it, rather than proposing a section order itself"
+    ]
+  },
+  {
+    "id": "small-sample-composition-feasibility-activation",
+    "prompt": "We're a tiny SaaS doing about 800 signups a month total, and want to test a new activation email. Can we run this as a real test?",
+    "expected_references": [
+      "references/experiment-design-and-feasibility.md",
+      "references/overlay-small-sample.md",
+      "references/activation-and-onboarding.md"
+    ],
+    "forbidden_references": [
+      "references/quasi-experiments.md"
+    ],
+    "must_include": [
+      "Runs the feasibility gate first and names the Ambition Tax or the three levers rather than a bare 'not enough traffic' refusal",
+      "Reaches activation-and-onboarding.md for the CUPED-fails-for-new-users constraint on top of the small-sample redirect, not overlay-small-sample.md alone"
+    ]
+  },
+  {
+    "id": "b2b-account-retention-composition",
+    "prompt": "We're a B2B SaaS selling annual contracts through a sales team. Is our account retention actually improving?",
+    "expected_references": [
+      "references/surface-b2b-sales-assisted.md",
+      "references/funnel-and-cohort-diagnosis.md"
+    ],
+    "forbidden_references": [],
+    "must_include": [
+      "States the unit of analysis is the account, not the user, and reads retention as logo retention and gross/net revenue retention rather than an N-day, rolling, or survival window",
+      "Does not invent an NRR benchmark figure"
+    ]
+  },
+  {
+    "id": "marketplace-referral-composition",
+    "prompt": "We're a two-sided marketplace building a referral program between sellers and want to test whether it actually compounds growth.",
+    "expected_references": [
+      "references/referral-and-product-loops.md",
+      "references/surface-marketplace-network.md",
+      "references/experiment-design-and-feasibility.md"
+    ],
+    "forbidden_references": [],
+    "must_include": [
+      "Names the referral test as a SUTVA/interference violation (inviter leaks treatment into control) before sizing it as a standard user-level test",
+      "Diagnoses the marketplace interference mechanism rather than defaulting to switchback randomization by name"
+    ]
+  },
+  {
+    "id": "cro-external-validity-reaches-conversion-file",
+    "prompt": "Someone found a case study where a red button beat a blue button and wants us to just ship the same change on our signup page. Good idea?",
+    "expected_references": [
+      "references/conversion-optimization.md"
+    ],
+    "forbidden_references": [],
+    "must_include": [
+      "Applies the external-validity lesson: a color-pattern win on someone else's page is not evidence it transfers to this one"
+    ]
+  },
+  {
+    "id": "loops-vs-funnels-reaches-growth-model-file",
+    "prompt": "Our team keeps saying 'build loops, not funnels' in planning meetings. What does that actually mean, and is it settled fact?",
+    "expected_references": [
+      "references/growth-model-and-loops.md"
+    ],
+    "forbidden_references": [],
+    "must_include": [
+      "Names the loops-vs-funnels lineage and notes the named voices are a tight, mutually-amplifying cluster rather than independent convergence"
+    ]
+  },
+  {
+    "id": "handoff-seam-reaches-handoff-file",
+    "prompt": "We just read out a pricing experiment. Who do we hand the result to, and what's still growth's job versus someone else's?",
+    "expected_references": [
+      "references/handoff.md"
+    ],
+    "forbidden_references": [],
+    "must_include": [
+      "Names product as the owner of the pricing tiers/hypothesis and states growth hands back the readout rather than setting the tier itself"
+    ]
+  }
+]
