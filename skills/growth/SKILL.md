@@ -2,7 +2,7 @@
 name: growth
 description: >-
   Improve acquisition-to-revenue conversion through honest experimentation — the feasibility gate
-  (can this be answered at your scale), experiment design, funnel diagnosis, activation,
+  (can this be answered at your scale), experiment design and prioritization, funnel diagnosis, activation,
   conversion optimization, retention, referral loops, pricing tests, and product-led growth. Use
   to size a test, diagnose a funnel drop, or design/read out an experiment. Not measurement
   validity/SRM/CUPED (→ data), demand/channels (→ marketing), pricing tiers/roadmap (→ product),
