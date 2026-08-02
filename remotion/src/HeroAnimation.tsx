@@ -94,13 +94,13 @@ const SceneGate: React.FC<{ t: Theme; dur: number }> = ({ t, dur }) => {
           the instinct the field never checks
         </div>
         <div style={{ background: t.codeBg, border: `1px solid ${t.line}`, borderRadius: 12, padding: "26px 32px", fontFamily: MONO, fontSize: 19, lineHeight: 2, color: t.ink }}>
-          <ClaimLine t={t} text={'✗ “we don’t have enough traffic to test this.”'} frame={frame} from={8} color={t.bad} />
-          <ClaimLine t={t} text="declared, or actually checked against a power you'd trust?" frame={frame} from={64} />
+          <ClaimLine t={t} text={'✗ “we don’t have enough traffic to A/B test this.”'} frame={frame} from={8} color={t.bad} />
+          <ClaimLine t={t} text="a guess — or checked?" frame={frame} from={64} />
         </div>
         <div style={{ marginTop: 22, background: t.panel, border: `1px solid ${t.line}`, borderRadius: 12, padding: "6px 20px" }}>
-          <TermRow t={t} label="the gate" body="can this comparison reach a power you'd trust, before a hypothesis or a flag exists" owner="growth ⭐" appear={r1} labelColor={t.good} />
+          <TermRow t={t} label="the gate" body="can this test reach a result you could actually trust, before a hypothesis or a flag exists" owner="growth ⭐" appear={r1} labelColor={t.good} />
           <TermRow t={t} label="if no" body="never a bare refusal — a bigger bet, an upstream metric, or a documented skip" owner="§7 redirect" appear={r2} />
-          <TermRow t={t} label="if yes" body="every winning number gets a haircut, and a posterior — not just a p-value" owner="§4–5" appear={r3} />
+          <TermRow t={t} label="if yes" body="every winning number gets trimmed to what's real — winners always look better than they are" owner="§4–5" appear={r3} />
         </div>
       </div>
     </AbsoluteFill>
@@ -175,11 +175,11 @@ const SceneHalving: React.FC<{ t: Theme; dur: number }> = ({ t, dur }) => {
 
 // -- S3 . THE Ambition Tax — two facts that multiply, not cancel --------------------
 const POSTERIORS: { prior: string; note: string; posterior: string }[] = [
-  { prior: "50%", note: "a coin-flip prior", posterior: "94.1%" },
-  { prior: "1/3", note: "Microsoft's reported average, 2009 — no published denominator", posterior: "88.9%" },
-  { prior: "20%", note: "Bing's high end · KDD 2014", posterior: "80.0%" },
-  { prior: "10%", note: "Bing's low end", posterior: "64.0%" },
-  { prior: "5%", note: "a bold, surprising bet", posterior: "45.7%" },
+  { prior: "hit rate 50%", note: "a coin-flip guess", posterior: "94% real" },
+  { prior: "hit rate 1 in 3", note: "Microsoft's reported average, 2009 — no published denominator", posterior: "89% real" },
+  { prior: "hit rate 20%", note: "Bing's high end · KDD 2014", posterior: "80% real" },
+  { prior: "hit rate 10%", note: "Bing's low end", posterior: "64% real" },
+  { prior: "hit rate 5%", note: "a bold, surprising guess", posterior: "46% ≈ coin flip" },
 ];
 
 const PosteriorRow: React.FC<{ t: Theme; prior: string; note: string; posterior: string; appear: number }> = ({ t, prior, note, posterior, appear }) => (
@@ -188,16 +188,16 @@ const PosteriorRow: React.FC<{ t: Theme; prior: string; note: string; posterior:
       opacity: appear,
       translate: `0 ${interpolate(appear, [0, 1], [8, 0])}px`,
       display: "grid",
-      gridTemplateColumns: "90px 1fr 100px",
+      gridTemplateColumns: "128px 1fr 148px",
       gap: 16,
       alignItems: "center",
       padding: "8px 16px",
       borderTop: `1px solid ${t.line}`,
     }}
   >
-    <div style={{ fontFamily: MONO, fontSize: 15, fontWeight: 700, color: t.ink }}>π={prior}</div>
+    <div style={{ fontFamily: MONO, fontSize: 14, fontWeight: 700, color: t.ink }}>{prior}</div>
     <div style={{ fontFamily: SANS, fontSize: 12, color: t.muted, lineHeight: 1.35 }}>{note}</div>
-    <div style={{ fontFamily: MONO, fontSize: 15, fontWeight: 700, color: t.good, textAlign: "right" }}>{posterior}</div>
+    <div style={{ fontFamily: MONO, fontSize: 14, fontWeight: 700, color: t.good, textAlign: "right" }}>{posterior}</div>
   </div>
 );
 
@@ -217,7 +217,7 @@ const SceneAmbitionTax: React.FC<{ t: Theme; dur: number }> = ({ t, dur }) => {
   return (
     <AbsoluteFill style={{ alignItems: "center", justifyContent: "center", opacity }}>
       <div style={{ translate: `0 ${y}px`, display: "flex", flexDirection: "column", alignItems: "center", width: 1080 }}>
-        <SceneTitle t={t} kicker="experiment-design-and-feasibility . the flagship" title="the Ambition Tax — paid twice, not once" />
+        <SceneTitle t={t} kicker="the Ambition Tax · experiment-design-and-feasibility" title="small samples force bigger, riskier bets" />
         <div style={{ width: 960, display: "grid", gridTemplateColumns: "1.05fr 1fr", gap: 22 }}>
           <div>
             <div style={{ opacity: facts, display: "flex", flexDirection: "column", gap: 10, marginBottom: 16 }}>
@@ -226,13 +226,13 @@ const SceneAmbitionTax: React.FC<{ t: Theme; dur: number }> = ({ t, dur }) => {
               <Move t={t} label="fact two — a small sample forces bigger bets: 2% relative needs 4–20× the traffic of 20%" appear={facts} />
             </div>
             <div style={{ opacity: tax, background: t.amberBg, border: `1px solid ${t.amber}`, borderRadius: 8, padding: "13px 16px", fontFamily: SANS, fontSize: 13.5, color: t.ink, lineHeight: 1.5 }}>
-              <b style={{ color: t.amber }}>The two effects don't cancel, they multiply:</b> the smaller your sample, the more
-              ambitious your test must be — and the more ambitious the test, the less a significant result on it means.
+              <b style={{ color: t.amber }}>The two effects don't cancel, they multiply:</b> the smaller your sample, the bigger
+              the bet you're forced to make — and the bigger the bet, the less a "win" on it actually means.
             </div>
           </div>
           <div>
             <div style={{ fontFamily: MONO, fontSize: 12.5, color: t.muted, marginBottom: 4, textAlign: "center" }}>
-              P(true positive | significant) — at α=.05, 80% power
+              how often a "winning" result is actually real
             </div>
             <div style={{ background: t.panel, border: `1px solid ${t.line}`, borderRadius: 12, paddingBottom: 4 }}>
               {POSTERIORS.map((p, i) => {
@@ -243,8 +243,8 @@ const SceneAmbitionTax: React.FC<{ t: Theme; dur: number }> = ({ t, dur }) => {
           </div>
         </div>
         <div style={{ marginTop: 22, opacity: caption, fontFamily: SANS, fontSize: 13.5, color: t.muted, textAlign: "center", maxWidth: 860, lineHeight: 1.55 }}>
-          A "statistically significant winner" is not a fact — it is a posterior, set by a hit rate you knew
-          <i> before</i> you ran the test (Kohavi, <i>Seven Rules of Thumb</i>, KDD 2014).
+          A "statistically significant" result isn't automatically real — how often it's real depends on how often
+          your guesses were right <i>before</i> you ran the test (Kohavi, <i>Seven Rules of Thumb</i>, KDD 2014).
         </div>
       </div>
     </AbsoluteFill>

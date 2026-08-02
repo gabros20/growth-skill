@@ -370,21 +370,22 @@
 </svg>
 <div class="wrap">
 <header>
-  <div class="eyebrow">an agent skill · the feasibility gate, experiment design, and funnel-wide growth</div>
+  <div class="eyebrow">an agent skill · A/B tests, funnels, retention, pricing — sized to your real traffic</div>
   <nav class="toplinks" aria-label="external links">
     <a href="https://github.com/gabros20/growth-skill" target="_blank" rel="noopener">GitHub</a>
     <a href="https://github.com/gabros20/growth-skill#install" target="_blank" rel="noopener">Install</a>
     <a href="/llms.txt">llms.txt</a>
   </nav>
   <h1><span class="sl">/</span>growth</h1>
-  <p class="lede"><b>growth</b> decides what's worth testing, whether it can be answered at your
-  scale, and what a result actually means once it exists — then designs the experiment, diagnoses
-  the funnel, and reads out the result. What makes it different is that <b>the growth surface and
-  the validity layer live in the same pack</b>: the incumbent genre teaches statistical rigor with
-  no growth surface attached, or the growth surface — activation, retention, loops, PLG — with no
-  validity layer underneath. The default reader runs a self-serve product with <b>real but limited
-  traffic</b> — enough to test something, rarely enough to power a standard conversion-rate
-  experiment the way a 200,000-visit playbook assumes.</p>
+  <p class="lede"><b>growth</b> improves the numbers a product lives on — signups, activation,
+  retention, referrals, revenue. Ask it to design an A/B test and it first tells you how much
+  traffic that test honestly needs; ask why conversions dropped and it walks the funnel and the
+  cohorts; ask what a winning test means and it tells you how much of the lift is real before you
+  ship. Pricing tests, referral loops, onboarding, product-led growth — 19 references and four
+  runnable calculators behind one router. What makes it different: most A/B-testing advice
+  silently assumes hundreds of thousands of visitors. This pack is built for products with <b>real
+  but limited traffic</b> — it tells you what you can actually learn at your size, and what to do
+  instead when the honest answer is "not this test."</p>
   <div class="term" style="margin-top:22px"><span class="c"># natural language — no flags, no fixed pipeline</span>
 <span class="p">/growth</span> is a 3% lift on our signup form worth testing, given we get 400 signups a month</div>
   <p class="hosts"><span class="hl">runs on</span><span class="ref">Claude Code</span><span>Codex</span><span>Cursor</span><span>Antigravity</span><span>opencode</span><span>Grok Build</span><span>Hermes</span></p>
@@ -396,15 +397,15 @@
 
   <div class="vidwrap" id="vidwrap"></div>
   <!-- render from remotion/, see remotion/README -->
-  <div class="herofallback router" role="img" aria-label="The feasibility gate: an instinct like 'we don't have enough traffic to test this' gets checked, not declared, against a power you'd trust before a hypothesis or a flag exists — a no is never a bare refusal, it is a redirect to a bigger bet, an upstream metric, or a documented skip. Halving the detectable effect quadruples the traffic a test needs, and metric choice alone can move that requirement two more orders of magnitude. The centerpiece is the Ambition Tax: winning estimates are biased upward by 13 to 30 percent depending on arm count and correction, small samples force bigger bets, and bigger bets carry lower priors — the two effects multiply rather than cancel, read against a Bayes posterior table showing what a significant result is actually worth at real, sourced hit rates from 94 percent down to 46. Then one primary job composes with at most one of four base surfaces, self-serve SaaS by default, plus two additive overlays for small-sample traffic and agent-run experiments, resolving to the smallest sufficient reference set: two files, read fully, out of nineteen.">
-    <div class="gate"><svg class="lu" aria-hidden="true"><use href="#lu-scale"/></svg><span><b>A significant result is a posterior, not a fact.</b> Its trustworthiness is set entirely by a hit rate you knew before you ran the test — and a small sample forces a bigger bet, while a bigger bet carries a lower prior. The two effects multiply, not cancel.</span></div>
+  <div class="herofallback router" role="img" aria-label="Growth checks a test's feasibility before running it: an instinct like 'we don't have enough traffic to test this' gets checked, not just assumed, before a hypothesis or a flag exists — a no is never a bare refusal, it is a redirect to a bigger bet, an upstream metric, or a documented skip. Halving the effect a test needs to detect quadruples the traffic it needs, and the metric you pick can move that requirement two more orders of magnitude on top. Small samples force bigger bets, and bigger bets win less often — so a winning result always gets trimmed to what's actually real, shown as a simple table: at a 50% real hit rate, 94% of wins are real; at a 1-in-3 hit rate, 89%; at a 10% hit rate, 64%; at a 5% hit rate, only 46% — close to a coin flip dressed up as a win. Then one primary job composes with at most one of four base surfaces, self-serve SaaS by default, plus two additive overlays for small-sample traffic and agent-run experiments, resolving to the smallest sufficient reference set: two files, read fully, out of nineteen.">
+    <div class="gate"><svg class="lu" aria-hidden="true"><use href="#lu-scale"/></svg><span><b>A "winning" test isn't automatically a win.</b> Small samples force big bets, big bets win less often, and winning results always look better than they are — this pack tells you how much to trust a result before you ship it.</span></div>
     <div class="rlane">
-      <div class="rlabel">the tax<small>what a "win" is worth</small></div>
+      <div class="rlabel">how much to trust a win<small>real hit rate → how often a "win" is real</small></div>
       <div class="chips">
-        <span class="chip" style="color:var(--good); border-color:var(--good)">π=50% → 94.1% posterior</span>
-        <span class="chip" style="color:var(--good); border-color:var(--good)">π=1/3 → 88.9%</span>
-        <span class="chip" style="color:var(--amber); border-color:var(--amber)">π=10% → 64.0%</span>
-        <span class="chip" style="color:var(--bad); border-color:var(--bad)">π=5% → 45.7% — a coin flip, dressed as a win</span>
+        <span class="chip" style="color:var(--good); border-color:var(--good)">hit rate 50% → 94% of wins are real</span>
+        <span class="chip" style="color:var(--good); border-color:var(--good)">hit rate 1 in 3 → 89%</span>
+        <span class="chip" style="color:var(--amber); border-color:var(--amber)">hit rate 10% → 64%</span>
+        <span class="chip" style="color:var(--bad); border-color:var(--bad)">hit rate 5% → 46% — a coin flip dressed as a win</span>
       </div>
     </div>
     <div class="rlane">
