@@ -1,0 +1,6 @@
+interface:
+  display_name: "Growth"
+  short_description: "Honest growth experiments sized to your actual scale"
+  default_prompt: "Use $growth to check whether my A/B test idea is answerable at my traffic level before I run it."
+policy:
+  allow_implicit_invocation: true
