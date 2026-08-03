@@ -96,7 +96,10 @@ behavior to a handful of named accounts on annual cycles measures noise, not the
 actually wants to know. See
 [surface-b2b-sales-assisted](surface-b2b-sales-assisted.md#6-retention-means-the-account-not-the-user)
 for the concrete treatment on that surface — this file's job is naming the switch, not re-deriving
-account-level retention math for a second unit.
+account-level retention math for a second unit. An NRR/GRR figure produced by that read keeps
+`success`'s definitional discipline — four audited definitions that are not one metric, no
+comparison across them (`success/references/renewals-and-expansion.md`; family ruling 2026-08-03:
+growth reads the trend, success owns the figure's definition and the renewal motion).
 
 ## 4. Twyman's Law: check the data before you believe the story
 

@@ -130,6 +130,14 @@ and its stripe-pattern reading (§2 there) once the unit is correctly set to acc
 user — this file's job is naming the switch, not re-deriving retention mechanics for a second
 unit.
 
+The seam with `success` (family ruling, 2026-08-03): `growth` reads whether retention *moved* —
+the trend and cohort diagnosis, at whatever unit of analysis the surface demands. The NRR/GRR
+*figure* that read produces keeps `success`'s definitional discipline:
+`success/references/renewals-and-expansion.md` audits four circulating NRR definitions that are
+not one metric and forbids any comparison that crosses definitions — state which definition the
+figure uses and cite that file rather than re-deriving the audit here. The renewal motion itself,
+and reporting the figure to a customer or a board, are `success`'s to operate.
+
 ## Failure modes and handoff
 - **A late-funnel sales artifact (demo script, proposal template) is proposed as an A/B test at
   typical B2B deal volume** → apply §1's arithmetic before agreeing; redirect to §4's levers,
