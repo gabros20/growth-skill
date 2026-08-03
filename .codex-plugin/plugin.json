@@ -1,0 +1,34 @@
+{
+  "name": "growth-skill",
+  "version": "0.1.1",
+  "description": "Improve acquisition-to-revenue conversion through honest experimentation — feasibility, funnels, retention",
+  "author": {
+    "name": "gabros20",
+    "url": "https://github.com/gabros20"
+  },
+  "homepage": "https://growthskill.vercel.app",
+  "repository": "https://github.com/gabros20/growth-skill",
+  "license": "MIT",
+  "keywords": [
+    "agent-skill",
+    "growth",
+    "experimentation",
+    "ab-testing",
+    "funnel",
+    "retention",
+    "activation"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Growth",
+    "shortDescription": "Improve acquisition-to-revenue conversion through honest experiments",
+    "longDescription": "Growth work with the feasibility gate attached: whether a question can be answered at your scale at all, experiment design and prioritization, funnel and cohort diagnosis, activation, conversion optimization, retention and resurrection, referral and product loops, pricing tests, product-led growth, and quasi-experimental methods for when randomization isn't available. Ships runnable, self-testing calculators (power, SRM, peeking, skew) validated against published anchors at import time.",
+    "developerName": "gabros20",
+    "category": "Productivity",
+    "capabilities": [],
+    "defaultPrompt": [
+      "Use $growth to check whether my A/B test idea is even answerable at my traffic level before I run it."
+    ],
+    "brandColor": "#1e7f4f"
+  }
+}

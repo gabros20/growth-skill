@@ -28,6 +28,9 @@ job. Family-boundary detail is at the bottom of this document, not the top.
 
 ```bash
 npx skills add gabros20/growth-skill -g -y
+
+# or, from a clone — installs into any of 8 client targets (claude, codex, …):
+./install.sh claude
 ```
 
 Or use it in Codex with `$growth`. Manual copy also works — copy `skills/growth/` into your
@@ -179,13 +182,14 @@ overlays, 1 handoff contract) and 4 runnable, self-testing calculators under `sk
   `peeking_table.py` (sequential-testing inflated-alpha curve, validated against the Armitage
   table) · `skew_check.py` (Kohavi's 355·s² normality floor, validated against Bing's post-erratum
   table)
-- **Eval suites:** `skills/growth/evals/routing/` · `skills/growth/evals/stats-cases/` ·
-  `skills/growth/evals/never-ship/`
+- **Eval suites:** `evals/routing/` · `evals/stats-cases/` · `evals/never-ship/` (repository-only,
+  not installed with the skill)
 
 ## Repository layout
 
 ```text
-skills/growth/       runtime skill (SKILL.md + 19 references + 4 self-testing assets + evals)
+skills/growth/       runtime skill (SKILL.md + 19 references + 4 self-testing assets)
+evals/               behavioral eval suites (repository-only, not installed)
 research/            multi-channel research corpora + build-gate synthesis
 ```
 
