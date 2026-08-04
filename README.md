@@ -2,6 +2,8 @@
 
 **Visual guide:** [growthskill.vercel.app](https://growthskill.vercel.app)
 
+**Family hub:** [digital-product-skill.vercel.app](https://digital-product-skill.vercel.app) — the 15-skill Digital Product family and its composer.
+
 Improve acquisition-to-revenue conversion through honest experimentation — the feasibility gate
 (can this be answered at your scale), experiment design, funnel diagnosis, activation, conversion
 optimization, retention, referral loops, pricing tests, and product-led growth.
