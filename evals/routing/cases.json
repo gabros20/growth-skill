@@ -325,5 +325,21 @@
     "must_include": [
       "Names product as the owner of the pricing tiers/hypothesis and states growth hands back the readout rather than setting the tier itself"
     ]
+  },
+  {
+    "id": "standalone-context-check-reaches-feasibility-gate",
+    "prompt": "I want to grow signups on my app. What should I test first?",
+    "expected_references": [
+      "references/experiment-design-and-feasibility.md"
+    ],
+    "forbidden_references": [
+      "references/experiment-readout-and-learning.md"
+    ],
+    "must_include": [
+      "Reads any digital-product/LEDGER.md Context and available analytics first, and asks nothing already answered there",
+      "Asks at most four questions in one round (weekly traffic at the step, the one metric and who picked it, what may change, how costly a wrong call is), each with a recommended answer, or proceeds on self-serve SaaS and opens with the assumptions that would change the answer most",
+      "Runs the feasibility gate on the answers before proposing a test design; at small traffic it redirects to bolder tests or upstream metrics rather than refusing",
+      "Records answers and assumptions in the LEDGER's Context block, each assumption with its basis and cost to reverse"
+    ]
   }
 ]

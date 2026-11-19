@@ -17,24 +17,13 @@ description: >-
 **Define and evaluate the experiment.** Improve acquisition, activation, retention, referral, and
 revenue by deciding what's worth testing, whether it can be answered at your scale, and what a
 result actually means once it exists. Growth owns the feasibility gate, the design, and the
-interpretation — not the measurement machinery underneath it and not the demand that fills the
-top of the funnel.
+interpretation.
 
-The scope is funnel-wide: funnel and cohort diagnosis, opportunity prioritization, experiment
-design and feasibility, experiment readout, activation and onboarding, conversion optimization,
-retention and resurrection, referral and product loops, monetization and pricing experiments,
-product-led growth, and quasi-experimental methods for when randomization isn't available.
-
-**What makes this pack different: it says what a significant result is actually worth.** The
-incumbent genre either teaches statistical rigor with no growth surface attached, or teaches the
-growth surface — activation, retention, loops, PLG — with no validity layer underneath it. The
-two have never been in the same pack. Nowhere in that genre does anyone tell an underpowered
-reader anything but "gather more data" or "redesign" — a refusal, not a redirect. This pack's
-flagship, [experiment-design-and-feasibility](references/experiment-design-and-feasibility.md)
-⭐, answers the question the rest of the field avoids for the small-scale reader: *can this
-question be answered at your scale, and what does "significant" mean given what you knew before
-you ran it?* Often the honest answer changes the test, not just the result — and saying so is the
-job.
+**What makes this pack different: it says what a significant result is actually worth**, where the
+genre offers an underpowered reader only "gather more data". The flagship,
+[experiment-design-and-feasibility](references/experiment-design-and-feasibility.md) ⭐, answers
+*can this question be answered at your scale, and what does "significant" mean given what you
+knew before you ran it?* Often the honest answer changes the test, not just the result.
 
 **The default reader runs a self-serve product with real but limited traffic** — enough to test
 something, rarely enough to power a standard conversion-rate experiment the way a 200,000-visit
@@ -44,30 +33,52 @@ acceptance of a higher false-positive rate — never "you can't test."
 `growth` writes experiment designs, feasibility verdicts, readouts, and requirements — **no
 production code**; see "Not this skill" below.
 
-Operate independently when invoked alone. When compatible upstream artifacts are provided
-(a marketing hypothesis, a product-picked metric, a certified measurement pipeline), use them
-without silently overriding established decisions. Recommend adjacent skills when useful; do not
-invoke them automatically unless the user explicitly requested a composition workflow.
+Operate independently when invoked alone; use compatible upstream artifacts (a marketing
+hypothesis, a product-picked metric, a certified measurement pipeline) without silently overriding
+their decisions. Recommend adjacent skills; never invoke them unless the user asked for a
+composition workflow.
+
+## Standalone context check
+
+Before producing anything the user will have to live with:
+1. **Look first.** Read `digital-product/LEDGER.md` (Context), `digital-product/<pack>/`, upstream
+   artifacts, the repo and this conversation. A fact found is never asked; a fact recorded is never
+   re-asked.
+2. **Size it.** Reversible and small → proceed, stating assumptions. New, costly or hard to undo →
+   check.
+3. **Ask only what the owner alone knows**, in their words: one round, at most four, highest
+   leverage first, each with a recommended answer ("ok" accepts all). Two rounds at most.
+4. **No or thin answers → decide as the expert.** Record each assumption with its basis and cost to
+   reverse; prefer the reversible option; show the cheapest proof early.
+5. **No way to ask → never block.** Proceed, and open the artifact with the assumptions and the
+   answers that would change it most.
+6. **Write it down.** Answers and assumptions go to the LEDGER's Context block.
+
+This pack's questions:
+1. Roughly how many people reach this step each week? (Read the analytics first.)
+2. Which one number should move, and who picked it? (Recommended: one metric, with a guardrail.)
+3. What may change: wording, layout, price, onboarding steps? (Recommended: the boldest change you
+   would ship.)
+4. How costly is a wrong call? (Recommended: if cheap to undo, a less certain answer is enough.)
+
+These feed the feasibility gate: [Experiment design and feasibility](references/experiment-design-and-feasibility.md)
+"1. The gate: can this question be answered here".
 
 ## Route before acting
 
-1. Identify the **one primary job** and the **one base surface**. Read one of each. **If the
-   request names no business model, do not stall** — assume the default surface (self-serve SaaS)
-   and say which you assumed.
+1. Identify the **one primary job** and the **one base surface**. Read one of each. **No business
+   model named → do not stall:** assume self-serve SaaS and say so.
 2. Add **additive overlays on top of** a base surface, never instead of one:
    [overlay-small-sample](references/overlay-small-sample.md) when traffic or users are too small
    for standard power, and [overlay-agentic](references/overlay-agentic.md) when a model designs,
    runs, or reads an experiment.
 3. Read [growth-model-and-loops](references/growth-model-and-loops.md) whenever a claim invokes a
    named growth-model figure (Balfour, Winters, Kwok, Verna, Eyal, McClure), the AARRR split, or
-   "loops" — it grades and attributes them so the other references need not re-derive it.
-4. **Never re-teach `data`'s validity mechanics.** SRM, CUPED, and peek-safe method selection are
-   certified by `data`'s `experiment-measurement-foundations.md` — cite it by name; this pack
-   owns design and interpretation on top of a validated pipeline, not the pipeline itself.
-5. **Re-verify any benchmark before using it.** Provenance — source, sample, method, date,
+   "loops" — it grades and attributes them.
+4. **Re-verify any benchmark before using it.** Provenance — source, sample, method, date,
    caveat — travels with every figure; an unsourced number is folklore even if it's popular.
-6. Read every selected reference completely before producing the affected artifact.
-7. Do not load unrelated references.
+5. Read every selected reference completely before producing the affected artifact; load nothing
+   unrelated.
 
 ### Jobs
 
@@ -114,13 +125,11 @@ Emitting for downstream work → [handoff](references/handoff.md).
 | Verification, defect triage, the ship/no-ship gate on functional or accessibility grounds | `quality`. Quality itself declines "design or read out an experiment" and routes it here |
 | A model's prompts, retrieval, or evaluation of its own output | `ai`. The agentic overlay owns only the deterministic envelope around an experiment a model runs |
 
-**The AARRR note.** A practitioner who knows Acquisition → Activation → Retention → Referral →
-Revenue will notice this pack starts at Activation, not Acquisition — a deliberate seam, not a
-gap. **AARRR spans three packs**: `marketing` owns acquisition channels, `growth` owns the
-experiments that improve conversion across the funnel — including referral loops and retention
-experimentation — `success` owns retention execution, the communications a growth test showed
-were worth sending. See [growth-model-and-loops.md](references/growth-model-and-loops.md) for the
-full reciprocation.
+**The AARRR note.** This pack starts at Activation, not Acquisition — a seam, not a gap.
+**AARRR spans three packs**: `marketing` owns acquisition channels, `growth` the experiments
+across the funnel (referral loops and retention experimentation included), `success` retention
+execution — the communications a growth test showed were worth sending. Full reciprocation:
+[growth-model-and-loops.md](references/growth-model-and-loops.md).
 
 ## Universal invariants
 
@@ -174,17 +183,13 @@ tier · the OEC and guardrails, if an experiment is being designed · the decisi
 to before the result exists · what the result **cannot** answer · and the sibling packs it hands
 to or depends on.
 
-Designs, verdicts, and readouts are delivered as documents. Neither is delivered as production
-code.
-
 ## Completion and handoff
 
 Before completion:
 
 - Confirm every requested artifact exists and every claim in it has a proof source — an
   unsourced "significant" is not a finished line.
-- Confirm no benchmark travels without its five-field provenance (source, sample, method, date,
-  caveat).
+- Confirm every benchmark carries its five-field provenance.
 - Distinguish what was independently verified from what is vendor-reported, self-selected, or
   folklore labeled on purpose.
 - State plainly what this experiment will and will not be able to prove, given its scale.
@@ -197,8 +202,7 @@ Before completion:
 The routing tables above link all 19 references. Assets are runnable, self-tested calculators:
 [power_calc.py](assets/power_calc.py) · [srm_check.py](assets/srm_check.py) ·
 [peeking_table.py](assets/peeking_table.py) · [skew_check.py](assets/skew_check.py) — each
-validated against a published anchor at import time. Eval suites live in the repository's
-`evals/` directory.
+validated against a published anchor at import time.
 
 Attribution, licences, and what this pack claims for itself — `SOURCES.md` at the repository root.
 

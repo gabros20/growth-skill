@@ -8,6 +8,16 @@ The release procedure synchronizes `.codex-plugin/plugin.json`, this changelog, 
 ## [Unreleased]
 
 ### Added
+- SKILL.md **Standalone context check** (before routing): the family's common core (look first,
+  size it, ask at most four owner-only questions with recommended answers, decide as the expert,
+  never block, record in the LEDGER) and four growth questions (weekly traffic at the step, the one
+  metric and who picked it, what may change, the cost of a wrong call); answers feed
+  `experiment-design-and-feasibility.md` "1. The gate: can this question be answered here". Offset so
+  SKILL.md does not grow (3519 → 3515): the mission's scope list (the Jobs table) and its prior-art
+  restatement (the "open at scale" invariant) are cut, the AARRR note and standalone sentence are
+  tightened, route step 4 is folded into the invariant and `data` row that already said it, and the
+  artifact contract's no-code sentence and the completion bullet's provenance list (both stated
+  above them) are cut. Routing eval `standalone-context-check-reaches-feasibility-gate`.
 - Family packaging parity: `install.sh` (8 client targets), `.codex-plugin/plugin.json`,
   `scripts/` toolchain (check-sync, lint-skill adapted to the routing/stats-cases/never-ship
   suites, count-skill-tokens), and the repository contract files (AGENTS.md, CLAUDE.md,
