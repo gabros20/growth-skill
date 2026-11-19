@@ -54,14 +54,14 @@ Before producing anything the user will have to live with:
    answers that would change it most.
 6. **Write it down.** Answers and assumptions go to the LEDGER's Context block.
 
-This pack's questions:
-1. Roughly how many people reach this step each week? (Read the analytics first.)
-2. Which one number should move, and who picked it? (Recommended: one metric, with a guardrail.)
+This pack's questions (a pool — ask the top four that step 1 left open):
+1. Roughly how many people reach this step each week?
+2. Which one number should move, and who picked it? (Recommended: one, with a guardrail.)
 3. What may change: wording, layout, price, onboarding steps? (Recommended: the boldest change you
    would ship.)
 4. How costly is a wrong call? (Recommended: if cheap to undo, a less certain answer is enough.)
 
-These feed the feasibility gate: [Experiment design and feasibility](references/experiment-design-and-feasibility.md)
+Answers feed [Experiment design and feasibility](references/experiment-design-and-feasibility.md)
 "1. The gate: can this question be answered here".
 
 ## Route before acting
